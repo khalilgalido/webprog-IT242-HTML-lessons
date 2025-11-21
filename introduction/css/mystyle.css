@@ -6,12 +6,13 @@ h1 {
   color: rgb(13, 13, 224);
   margin-left: 20px;
 
-  .center {
-    text-align: center;
-    color: rgb(178, 0, 233);
+ .center {
+  text-align: center;
+  color: red;
+}
   }
 
-}
+
 
 
 
