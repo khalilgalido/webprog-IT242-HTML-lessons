@@ -1,6 +1,6 @@
 body {
     font-family: "Helvetica", Arial, sans-serif;
-    background: #ffffff;
+    background: #b99494;
     color: #222;
     margin: 0;
     padding: 0;
@@ -8,9 +8,12 @@ body {
 
 .container {width: 65%;
     margin: 50px auto;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #000000;
     padding: 30px;
-    border-radius: 8px;}
+    border-radius: 8px;
+    background-image: url('https://th.bing.com/th/id/R.5f08396b7802a37f78a44173fa972dbf?rik=S2I%2fn35pRfpqOg&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fwp1827314.jpg&ehk=H%2bKMGlg5Cdxo6Z0Gsv2%2fwlfLrtCByb7Zcn3fWkOdaE4%3d&risl=&pid=ImgRaw&r=0');
+    background-size: cover;       
+    background-position: center;}
 
 h1 {text-align: center;
     font-weight: 500;
