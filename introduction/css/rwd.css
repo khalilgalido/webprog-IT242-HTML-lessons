@@ -59,6 +59,7 @@ body {
 
 .content {
   grid-area: main;
+  background-image: -moz-repeating-linear-gradient('https://th.bing.com/th/id/OIP.5S5-KpqnfpM4vhBqv93iRQHaHa?w=187&h=186&c=7&r=0&o=7&pid=1.7&rm=3');
 }
 
 .content > h1 {
