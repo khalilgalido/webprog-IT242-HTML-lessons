@@ -1,0 +1,89 @@
+/* Custom Styles for LeBron James Profile */
+
+/* 1. Body and Background */
+body {
+    /* Use a sophisticated dark background color */
+    background-color: #0d1117; 
+    /* Set text color to light grey for readability on dark background */
+    color: #e6e6e6; 
+    font-family: 'Arial', sans-serif;
+}
+
+/* 2. Heading Styles */
+h2 {
+    /* Use a contrasting color for section headings */
+    color: #ffd700; /* Gold/Yellow */
+    border-bottom: 3px solid #ffd700;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Center all h2 elements in the container */
+.container > h2 {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Carousel Styling */
+
+/* Ensure the carousel images cover the area without distorting */
+.carousel-item img {
+    height: 550px; /* Set a fixed height for a consistent look */
+    object-fit: cover; /* Ensures the image covers the container */
+    filter: brightness(0.7); /* Slightly darken the image so the text is easier to read */
+}
+
+/* Target the caption backgrounds from the HTML to refine their appearance */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.7); /* Use a semi-transparent dark background */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* 4. Card Styling */
+
+/* Apply a subtle lift and transition to all cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+/* Effect on hover */
+.card:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important; /* Deeper shadow on hover */
+}
+
+/* Ensure the text inside dark cards remains light */
+.card.bg-dark h3, .card.bg-dark p {
+    color: white !important;
+}
+
+/* 5. Table Styling */
+
+/* Make the dark table slightly more defined */
+.table.table-dark {
+    --bs-table-bg: #1c1c1c; /* Darker background for the table body */
+    --bs-table-striped-bg: #2a2a2a; /* Slightly lighter stripes */
+}
+
+/* Add a bold, signature color to the table header */
+.table thead.table-primary {
+    --bs-table-bg: #5555ff; /* A rich purple/blue */
+    color: white;
+}
+
+/* Style for the standout row (e.g., peak performance or current season) */
+.table-info {
+    --bs-table-color: black;
+    font-weight: bold;
+}
+
+/* Responsive adjustment for very small screens if needed (Bootstrap handles most of this) */
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 300px; /* Shorter height on mobile */
+    }
+}
