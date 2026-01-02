@@ -91,8 +91,20 @@ ul { list-style: none; }
 
 /* Section 1: About (Cream) */
 #about {
+    /* Fallback color (shows if image doesn't load) */
     background-color: var(--bg-light); 
-    padding-bottom: 0; /* Allows image to sit on bottom edge */
+    
+    /* --- INSERT YOUR IMAGE PATH HERE --- */
+    /* Example: url('image/my-background.jpg'); */
+    background-image: url('image/s1 bg.JPG'); 
+    
+    /* Essential settings for a full-cover background */
+    background-size: cover;      /* Stretches image to fill the whole section */
+    background-position: center; /* Keeps the main part of the image visible */
+    background-repeat: no-repeat;
+    
+    /* Keep your existing padding rule */
+    padding-bottom: 0; 
 }
 
 /* Section 2: Education (Light Green) */
@@ -184,7 +196,6 @@ ul { list-style: none; }
 .social-icons a::after {
     content: attr(data-tooltip);
     position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-10px);
-    background-image: url('../image/s1 bg.JPG'); /* Check your file path! */
     background-size: cover; background-position: center; background-repeat: no-repeat;
     color: var(--bg-light); text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     padding: 10px 15px; border-radius: 5px; font-family: 'Work Sans', sans-serif; font-size: 0.9rem;
