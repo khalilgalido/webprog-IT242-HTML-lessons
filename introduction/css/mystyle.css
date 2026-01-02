@@ -307,188 +307,162 @@ ul {
    6. EDUCATION SECTION (Advanced Timeline)
    ========================================= */
 
-/* The main container for the timeline area */
-.main-timeline {
+/* =========================================
+   6. EDUCATION SECTION (Horizontal)
+   ========================================= */
+
+.horizontal-timeline {
     position: relative;
+    display: flex;
+    justify-content: space-between; /* Spreads items evenly */
+    align-items: flex-start;
+    padding-top: 40px; /* Space for the date/dot */
     width: 100%;
-    margin: 40px auto;
-    padding: 20px 0;
 }
 
-/* THE CENTRAL VERTICAL LINE */
-.main-timeline::after {
-    content: '';
+/* The Line connecting them */
+.timeline-line {
     position: absolute;
-    width: 4px;
-    background-color: var(--text-dark); /* Your Dark Green #89986D */
-    top: 0;
-    bottom: 0;
-    left: 50%; /* Position exactly in the middle */
-    margin-left: -2px; /* Centers the 4px line */
+    top: 54px; /* Aligns with the dots */
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--text-dark); /* Dark Green */
+    z-index: 0;
+}
+
+/* Individual Item Wrapper */
+.timeline-item {
+    position: relative;
+    width: 23%; /* 4 items = approx 23-25% each */
+    text-align: center;
     z-index: 1;
 }
 
-/* Individual Timeline Item Container */
-.timeline-container {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 50%; /* Occupies half the width */
-    z-index: 2; /* Sits above the line */
-}
-
-/* --- Positioning Left and Right items --- */
-.timeline-container.left {
-    left: 0;
-}
-
-.timeline-container.right {
-    left: 50%;
-}
-
-/* --- The "Dot" on the line --- */
-.timeline-icon {
-    position: absolute;
+/* The Dot */
+.timeline-dot {
     width: 20px;
     height: 20px;
-    right: -10px; /* Positions dot center on the right edge of LEFT containers */
-    background-color: var(--bg-light); /* Cream center */
-    border: 4px solid var(--text-dark); /* Green border */
+    background-color: var(--bg-light);
+    border: 4px solid var(--text-dark);
     border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
+    margin: 0 auto 20px auto; /* Centers dot and pushes card down */
+    position: relative;
+    z-index: 2;
 }
 
-/* Fix dot position for RIGHT containers */
-.timeline-container.right .timeline-icon {
-    left: -10px;
-}
-
-/* --- The Date Label --- */
+/* The Date */
 .timeline-date {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: -30px; /* Sits above the dot */
+    width: 100%;
+    text-align: center;
     font-weight: bold;
     color: var(--text-dark);
-    font-family: 'Work Sans', sans-serif;
-    white-space: nowrap;
+    font-size: 0.9rem;
 }
 
-/* Date position for LEFT side (it sits to the right of the dot) */
-.timeline-container.left .timeline-date {
-    right: -130px; /* Adjust based on date length */
-    text-align: left;
-}
-
-/* Date position for RIGHT side (it sits to the left of the dot) */
-.timeline-container.right .timeline-date {
-    left: -130px; /* Adjust based on date length */
-    text-align: right;
-}
-
-/* --- The Content Card --- */
-.timeline-content {
-    padding: 20px;
-    background: var(--white); /* White card background */
-    border-radius: 15px; /* Rounded corners like reference */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    display: flex; /* Enables flexbox for logo placement */
-    align-items: center;
-    gap: 20px;
-    border: 2px solid var(--text-accent); /* Optional: Subtle green border */
-}
-
-/* --- LOGO PLACEMENT RULES --- */
-
-/* Logo Placeholder Style */
-.school-logo {
-    width: 80px;
-    height: 80px;
-    background-color: var(--bg-accent); /* Placeholder color */
-    border-radius: 50%; /* Circular logo area */
+/* The Content Card */
+.timeline-card {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-weight: bold;
-    color: var(--text-dark);
-    flex-shrink: 0; /* Prevents logo squishing */
-}
-
-/* LEFT CONTAINER RULE: Logo stays on the left (default row) */
-.timeline-container.left .timeline-content {
-    flex-direction: row;
+    gap: 15px;
     text-align: left;
+    min-height: 150px; /* Ensures cards are roughly same height */
+    border-top: 3px solid var(--text-accent);
 }
 
-/* RIGHT CONTAINER RULE: Logo moves to the right edge (row-reverse) */
-.timeline-container.right .timeline-content {
+/* --- ALTERNATING LOGO LAYOUTS --- */
+
+/* Normal (Logo Left) */
+.timeline-card.layout-left {
+    flex-direction: row;
+}
+
+/* Reversed (Logo Right) */
+.timeline-card.layout-right {
     flex-direction: row-reverse;
     text-align: right;
 }
 
-/* Typography inside the card */
-.school-info h3 {
-    font-family: 'Abril Fatface', serif;
-    margin-bottom: 5px;
+/* Logo Placeholder */
+.school-logo {
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-accent);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    flex-shrink: 0; /* Prevents logo from squishing */
     color: var(--text-dark);
 }
-.school-info h4 {
-    font-weight: bold;
-    color: var(--text-accent);
-    margin-bottom: 10px;
+
+/* Text Styling */
+.school-info h3 {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 5px;
 }
+
+.school-info h4 {
+    font-size: 0.85rem;
+    color: var(--text-accent);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
 .school-info p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
 }
 
 /* =========================================
-   MOBILE RESPONSIVENESS FOR TIMELINE
+   MOBILE RESPONSIVENESS (Horizontal -> Vertical)
    ========================================= */
-@media (max-width: 768px) {
-    /* Move the central line to the far left */
-    .main-timeline::after {
-        left: 30px;
-    }
-
-    /* Make containers full width */
-    .timeline-container {
-        width: 100%;
-        padding-left: 70px; /* Space for the line and dots on left */
-        padding-right: 20px;
-    }
-
-    /* Reset Left/Right positioning */
-    .timeline-container.right, 
-    .timeline-container.left {
-        left: 0;
-    }
-
-    /* Move dots to the far left line */
-    .timeline-container.left .timeline-icon,
-    .timeline-container.right .timeline-icon {
-        left: 20px;
-        right: auto;
-    }
-
-    /* Move dates above the cards */
-    .timeline-date {
-        position: relative;
-        top: auto;
-        transform: none;
-        left: auto;
-        right: auto;
-        text-align: left;
-        margin-bottom: 10px;
-        display: block;
+@media (max-width: 900px) {
+    .horizontal-timeline {
+        flex-direction: column; /* Stacks items vertically */
+        gap: 30px;
     }
     
-    /* Reset logo placement rules for mobile (always logo left, text right) */
-    .timeline-container.right .timeline-content,
-    .timeline-container.left .timeline-content {
-        flex-direction: row;
-        text-align: left;
+    /* Hide the horizontal line on mobile */
+    .timeline-line {
+        display: none;
+    }
+    
+    /* Make items full width */
+    .timeline-item {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .timeline-date {
+        position: static; /* Resets positioning */
+        margin-bottom: 5px;
+    }
+    
+    /* Optional: Draw a small vertical line between items on mobile? */
+    .timeline-item::after {
+        content: '';
+        width: 2px;
+        height: 30px;
+        background: var(--text-dark);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+    }
+    .timeline-item:last-child::after {
+        display: none;
     }
 }
 
