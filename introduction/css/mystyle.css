@@ -120,29 +120,91 @@ ul {
 /* --- Section Specifics --- */
 
 /* About Me */
+/* --- Updated About Section --- */
+
 .about-content {
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+    flex-wrap: wrap; /* Wraps on mobile */
+    gap: 50px;       /* increased gap for a cleaner look */
     align-items: center;
     justify-content: center;
+    padding: 20px 0;
 }
 
-.profile-img-placeholder {
+/* Image Styling */
+.profile-img-container {
+    flex: 0 0 250px; /* Fixed width for image container */
+}
+
+.profile-img {
     width: 250px;
     height: 250px;
-    background-color: var(--text-accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
+    object-fit: cover;
+    border-radius: 50%; /* Keeps it circular, remove this line if you want a square */
+    /* If you don't have an image yet, this acts as the placeholder color */
+    background-color: var(--text-dark); 
+    border: 3px solid var(--text-dark);
 }
 
+/* Text Styling */
 .text-content {
     flex: 1;
     min-width: 300px;
+    text-align: left; /* Aligns text to the left like the image */
+}
+
+/* The Big Headline */
+.casual-headline {
+    font-family: 'Abril Fatface', serif; /* The bold, casual serif font */
+    font-size: 3rem; /* Large text */
+    line-height: 1.2;
+    color: var(--dark-grey);
+    margin-bottom: 20px;
+}
+
+/* The Name Highlight Box */
+.highlight {
+    background-color: var(--text-dark); /* Using your #89986D color */
+    color: var(--bg-light); /* Using your #F6F0D7 color */
+    padding: 0 10px;
+    display: inline-block; /* Ensures the box wraps tightly around the text */
+    transform: rotate(-2deg); /* A tiny tilt to make it look "casual" */
+}
+
+/* The Paragraph Text */
+.casual-text {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1rem;
+    color: var(--dark-grey);
+}
+
+/* The Links */
+.casual-text a {
+    color: var(--text-dark);
+    font-weight: 600; /* Bold links */
+    text-decoration: none;
+    border-bottom: 2px solid var(--bg-accent); /* Underline effect */
+    transition: all 0.2s ease;
+}
+
+.casual-text a:hover {
+    background-color: var(--bg-accent);
+    color: var(--white);
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .casual-headline {
+        font-size: 2.2rem; /* Smaller font on phone */
+        text-align: center;
+    }
+    .casual-text {
+        text-align: center;
+    }
+    .about-content {
+        flex-direction: column; /* Stack image on top of text */
+        gap: 30px;
+    }
 }
 
 /* Education Timeline Style */
