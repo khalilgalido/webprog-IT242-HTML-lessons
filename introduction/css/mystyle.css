@@ -254,6 +254,63 @@ ul { list-style: none; }
 .timeline-pill h4 { font-size: 0.9rem; opacity: 0.9; margin-bottom: 10px; font-weight: 600; }
 .timeline-pill p { font-size: 0.85rem; opacity: 0.8; line-height: 1.4; }
 
+/* --- NEW TIMELINE IMAGE STYLES --- */
+
+/* The Container for the Image */
+.timeline-img {
+    position: absolute;
+    top: 50%; /* Center vertically relative to the row */
+    transform: translateY(-50%); 
+    width: 250px; /* Width of the image */
+    height: 160px; /* Height of the image */
+    z-index: 1;
+}
+
+/* Style the actual image file */
+.timeline-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills box without stretching */
+    border-radius: 15px; /* Matches your pill rounded look */
+    border: 4px solid var(--text-dark); /* Adds a Green border */
+    box-shadow: 5px 5px 0px rgba(137, 152, 109, 0.4); /* Nice shadow */
+    transition: transform 0.3s ease;
+}
+
+.timeline-img img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* --- POSITIONING LOGIC --- */
+
+/* For LEFT rows, push image to the RIGHT side */
+.timeline-row.left .timeline-img {
+    left: 115%; /* Moves it past the center line to the empty right side */
+    /* 100% would be the center line, so 115% adds a gap */
+}
+
+/* For RIGHT rows, push image to the LEFT side */
+.timeline-row.right .timeline-img {
+    right: 115%; /* Moves it past the center line to the empty left side */
+}
+
+/* --- MOBILE UPDATE (Important!) --- */
+/* On mobile, there is no "empty side", so we move the image inside the card or hide it */
+@media (max-width: 968px) {
+    .timeline-img {
+        position: static; /* Stop floating */
+        transform: none;
+        width: 100%; /* Full width */
+        height: 200px;
+        margin-top: 20px; /* Space between pill and image */
+    }
+
+    .timeline-row.left .timeline-img,
+    .timeline-row.right .timeline-img {
+        left: auto;
+        right: auto;
+    }
+}
 /* =========================================
    6. GALLERY, HOBBIES & RESOURCES
    ========================================= */
