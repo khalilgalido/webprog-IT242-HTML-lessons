@@ -425,72 +425,175 @@ ul {
 }
 
 /* =========================================
-   MOBILE RESPONSIVENESS (Horizontal -> Vertical)
+   6. EDUCATION SECTION (Vertical Pill Style)
    ========================================= */
-@media (max-width: 900px) {
-    .horizontal-timeline {
-        flex-direction: column; /* Stacks items vertically */
-        gap: 30px;
-    }
+
+.pill-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding-bottom: 50px; /* Space for the bottom arrow */
+}
+
+/* --- The Vertical Line --- */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--text-dark); /* Dark Green Line */
+    transform: translateX(-2px); /* Perfectly center the 4px line */
+    z-index: 0;
+}
+
+/* --- The Arrow at the Bottom --- */
+.timeline-line::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Pushes arrow slightly below the line end */
+    left: 50%;
+    transform: translateX(-50%);
     
-    /* Hide the horizontal line on mobile */
-    .timeline-line {
-        display: none;
-    }
+    /* Creating the Triangle Arrow shape */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid var(--text-dark); /* Matches line color */
+}
+
+/* --- The Rows (Hold dot, date, and card) --- */
+.timeline-row {
+    position: relative;
+    width: 50%; /* Takes up half the screen width */
+    padding: 20px 40px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* Left Side Positioning */
+.timeline-row.left {
+    left: 0;
+    text-align: right; /* Aligns text towards the center line */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Pushes pill to the right side of this container */
+}
+
+/* Right Side Positioning */
+.timeline-row.right {
+    left: 50%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Pushes pill to the left side of this container */
+}
+
+/* --- The Dot on the Line --- */
+.timeline-dot {
+    position: absolute;
+    top: 30px; /* Aligns with top of the card */
+    width: 20px;
+    height: 20px;
+    background-color: var(--bg-light); /* Cream center */
+    border: 4px solid var(--text-dark); /* Dark Green rim */
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-row.left .timeline-dot {
+    right: -10px; /* Position exactly on center line */
+}
+
+.timeline-row.right .timeline-dot {
+    left: -10px; /* Position exactly on center line */
+}
+
+/* --- The Date Label (Above the Card/Dot) --- */
+.timeline-date {
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-family: 'Work Sans', sans-serif;
+    /* In reference, date sits near the line */
+}
+
+/* --- The Content Card (The "Pill") --- */
+.timeline-pill {
+    background-color: var(--text-dark); /* Dark Green Card */
+    color: var(--bg-light);             /* Cream Text */
+    padding: 20px 30px;
+    border-radius: 50px; /* Makes it a pill shape like reference */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 350px; /* Prevents it from getting too wide */
+    width: 100%;
     
-    /* Make items full width */
-    .timeline-item {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .timeline-date {
-        position: static; /* Resets positioning */
-        margin-bottom: 5px;
-    }
-    
-    /* Optional: Draw a small vertical line between items on mobile? */
-    .timeline-item::after {
-        content: '';
-        width: 2px;
-        height: 30px;
-        background: var(--text-dark);
-        position: absolute;
-        bottom: -30px;
-        left: 50%;
-    }
-    .timeline-item:last-child::after {
-        display: none;
-    }
+    /* Transition for hover effect */
+    transition: transform 0.3s ease;
+}
+
+.timeline-pill:hover {
+    transform: translateY(-5px); /* Slight float effect on hover */
+}
+
+.timeline-pill h3 {
+    font-family: 'Abril Fatface', serif;
+    color: var(--bg-light); /* Cream Title */
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.timeline-pill h4 {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.timeline-pill p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    line-height: 1.4;
 }
 
 /* =========================================
-   7. GALLERY SECTION
+   MOBILE RESPONSIVENESS
    ========================================= */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+@media (max-width: 768px) {
+    /* Move line to the far left */
+    .timeline-line {
+        left: 30px;
+    }
+    
+    /* Reset width to full */
+    .timeline-row {
+        width: 100%;
+        left: 0;
+        padding-left: 70px; /* Clear space for the left-side line */
+        padding-right: 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* Reset alignment for both sides to simple Left Align */
+    .timeline-row.left,
+    .timeline-row.right {
+        text-align: left;
+        align-items: flex-start;
+    }
+    
+    /* Move dots to the left line */
+    .timeline-row.left .timeline-dot,
+    .timeline-row.right .timeline-dot {
+        left: 20px; /* Center on the 30px line */
+        right: auto;
+    }
+    
+    /* Adjust Pill shape for mobile (slightly less round to save space?) */
+    .timeline-pill {
+        border-radius: 20px; /* Slightly squarer on phone for more text space */
+    }
 }
-
-.gallery-item {
-    background-color: var(--text-accent);
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.9rem;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
-
-.gallery-item:hover {
-    transform: scale(1.03);
-}
-
 /* =========================================
    8. HOBBIES SECTION
    ========================================= */
