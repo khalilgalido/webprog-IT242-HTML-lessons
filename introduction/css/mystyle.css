@@ -96,7 +96,7 @@ ul { list-style: none; }
     
     /* --- INSERT YOUR IMAGE PATH HERE --- */
     /* Example: url('image/my-background.jpg'); */
-    background-image: url('image/s1 bg.JPG'); 
+    background-image: url('s1 bg.JPG'); 
     
     /* Essential settings for a full-cover background */
     background-size: cover;      /* Stretches image to fill the whole section */
