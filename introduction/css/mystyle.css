@@ -98,28 +98,28 @@ ul { list-style: none; }
 #education {
     background-color: var(--bg-accent);
 }
-/* --- Education Title Highlight --- */
-#education .section-title {
-    background-color: var(--bg-light); /* Cream Background */
-    color: var(--text-dark);           /* Dark Green Text */
-    
-    /* Make it look like a button/badge */
-    display: inline-block;             /* Ensures box only wraps the text */
-    padding: 15px 40px;                /* Space inside the box */
-    border-radius: 50px;               /* Rounded "Pill" shape */
-    
-    /* Optional: Adds a shadow to make it pop */
-    box-shadow: 5px 5px 0px rgba(51, 51, 51, 0.1); 
-    
-    /* Reset margin to ensure it sits nicely */
-    margin-bottom: 60px;
-}
+/* --- Education Title Highlight (Forced) --- */
 
-/* Ensure the container centers the inline-block element */
+/* 1. Force the container to center the title */
 #education .container {
     text-align: center;
 }
 
+/* 2. Style the Title Box */
+#education .section-title {
+    /* !important forces the browser to use this color */
+    background-color: var(--bg-light) !important; 
+    color: var(--text-dark) !important;
+    
+    /* Box Shape */
+    display: inline-block; 
+    padding: 15px 50px; 
+    border-radius: 50px;
+    margin-bottom: 60px;
+    
+    /* Shadow */
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+}
 /* Section 3: Gallery (Cream) */
 #gallery {
     background-color: var(--bg-light);
