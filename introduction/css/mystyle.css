@@ -201,6 +201,34 @@ ul {
     .casual-text {
         text-align: center;
     }
+    /* --- Social Icons Styling --- */
+
+.social-icons {
+    margin-top: 20px; /* Space between text and icons */
+    display: flex;
+    gap: 20px; /* Space between each icon */
+    align-items: center;
+}
+
+.social-icons a {
+    font-size: 1.8rem; /* Make icons nice and big */
+    color: var(--text-dark); /* Your dark green color #89986D */
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Hover Effect */
+.social-icons a:hover {
+    color: var(--bg-accent); /* Your light green color #C5D89D */
+    transform: translateY(-5px); /* Moves up slightly when hovered */
+}
+
+/* Mobile Tweak Updates */
+@media (max-width: 768px) {
+    .social-icons {
+        justify-content: center; /* Center icons on mobile */
+    }
+}
     .about-content {
         flex-direction: column; /* Stack image on top of text */
         gap: 30px;
