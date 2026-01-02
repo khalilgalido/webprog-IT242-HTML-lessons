@@ -143,8 +143,14 @@ ul {
 .text-side {
     flex: 1;
     max-width: 600px;
+    align-self: center; /* Keeps it roughly centered vertically */
+    
+    /* MOVES THE TEXT UP */
+    /* Change -50px to -80px if you want it even higher */
+    transform: translateY(-50px); 
+    
+    padding-bottom: 50px; /* Adds a little buffer at the bottom */
 }
-
 /* "Creative & Clean" Tagline */
 .mini-tagline {
     font-family: 'Work Sans', sans-serif;
