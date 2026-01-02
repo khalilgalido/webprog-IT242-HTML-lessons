@@ -235,9 +235,25 @@ ul {
     left: 50%;
     transform: translateX(-50%) translateY(-10px);
     
-    background-color: var(--dark-grey);
-    color: var(--bg-light);
-    padding: 5px 10px;
+/* Update this section in your CSS */
+.social-icons a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    
+    /* --- CHANGED: Use an image instead of a solid color --- */
+    background-image: url('s1 bg.JPG'); 
+    background-size: cover;    /* Ensures image covers the whole popup */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    
+    /* Ensure text is readable on top of the image */
+    color: var(--bg-light); 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Adds shadow to text so it pops */
+    
+    padding: 10px 15px; /* Increased padding slightly for better look */
     border-radius: 5px;
     font-family: 'Work Sans', sans-serif;
     font-size: 0.9rem;
@@ -246,12 +262,8 @@ ul {
     visibility: hidden;
     transition: all 0.3s ease;
     pointer-events: none;
+    z-index: 10; /* Ensures it sits on top of everything */
 }
-
-.social-icons a:hover::after {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(-20px);
 }
 
 /* --- Right Side: Image --- */
