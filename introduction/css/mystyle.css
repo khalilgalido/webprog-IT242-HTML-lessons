@@ -244,7 +244,7 @@ ul {
     transform: translateX(-50%) translateY(-10px);
     
     /* --- CHANGED: Use an image instead of a solid color --- */
-    background-image: url('s1 bg.JPG'); 
+    background-image: url('image/s1 bg.JPG'); 
     background-size: cover;    /* Ensures image covers the whole popup */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat;
