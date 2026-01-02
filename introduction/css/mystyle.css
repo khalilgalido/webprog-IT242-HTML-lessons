@@ -124,7 +124,20 @@ ul { list-style: none; }
 #gallery {
     background-color: var(--bg-light);
 }
-
+#education .section-title {
+    /* !important forces the browser to use this color */
+    background-color: var(--bg-accent) !important; 
+    color: var(--text-accent) !important;
+    
+    /* Box Shape */
+    display: inline-block; 
+    padding: 15px 50px; 
+    border-radius: 50px;
+    margin-bottom: 60px;
+    
+    /* Shadow */
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+}
 /* Section 4: Hobbies (Light Green) */
 #hobbies {
     background-color: var(--bg-accent);
