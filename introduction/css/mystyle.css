@@ -304,21 +304,192 @@ ul {
 }
 
 /* =========================================
-   6. EDUCATION SECTION
+   6. EDUCATION SECTION (Advanced Timeline)
    ========================================= */
-.timeline-item {
-    background: var(--white);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-left: 5px solid var(--text-dark);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+/* The main container for the timeline area */
+.main-timeline {
+    position: relative;
+    width: 100%;
+    margin: 40px auto;
+    padding: 20px 0;
 }
 
-.timeline-item .date {
+/* THE CENTRAL VERTICAL LINE */
+.main-timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--text-dark); /* Your Dark Green #89986D */
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Position exactly in the middle */
+    margin-left: -2px; /* Centers the 4px line */
+    z-index: 1;
+}
+
+/* Individual Timeline Item Container */
+.timeline-container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%; /* Occupies half the width */
+    z-index: 2; /* Sits above the line */
+}
+
+/* --- Positioning Left and Right items --- */
+.timeline-container.left {
+    left: 0;
+}
+
+.timeline-container.right {
+    left: 50%;
+}
+
+/* --- The "Dot" on the line --- */
+.timeline-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px; /* Positions dot center on the right edge of LEFT containers */
+    background-color: var(--bg-light); /* Cream center */
+    border: 4px solid var(--text-dark); /* Green border */
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+/* Fix dot position for RIGHT containers */
+.timeline-container.right .timeline-icon {
+    left: -10px;
+}
+
+/* --- The Date Label --- */
+.timeline-date {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: var(--text-dark);
+    font-family: 'Work Sans', sans-serif;
+    white-space: nowrap;
+}
+
+/* Date position for LEFT side (it sits to the right of the dot) */
+.timeline-container.left .timeline-date {
+    right: -130px; /* Adjust based on date length */
+    text-align: left;
+}
+
+/* Date position for RIGHT side (it sits to the left of the dot) */
+.timeline-container.right .timeline-date {
+    left: -130px; /* Adjust based on date length */
+    text-align: right;
+}
+
+/* --- The Content Card --- */
+.timeline-content {
+    padding: 20px;
+    background: var(--white); /* White card background */
+    border-radius: 15px; /* Rounded corners like reference */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: flex; /* Enables flexbox for logo placement */
+    align-items: center;
+    gap: 20px;
+    border: 2px solid var(--text-accent); /* Optional: Subtle green border */
+}
+
+/* --- LOGO PLACEMENT RULES --- */
+
+/* Logo Placeholder Style */
+.school-logo {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-accent); /* Placeholder color */
+    border-radius: 50%; /* Circular logo area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--text-dark);
+    flex-shrink: 0; /* Prevents logo squishing */
+}
+
+/* LEFT CONTAINER RULE: Logo stays on the left (default row) */
+.timeline-container.left .timeline-content {
+    flex-direction: row;
+    text-align: left;
+}
+
+/* RIGHT CONTAINER RULE: Logo moves to the right edge (row-reverse) */
+.timeline-container.right .timeline-content {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+/* Typography inside the card */
+.school-info h3 {
+    font-family: 'Abril Fatface', serif;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+.school-info h4 {
     font-weight: bold;
     color: var(--text-accent);
-    display: block;
     margin-bottom: 10px;
+}
+.school-info p {
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS FOR TIMELINE
+   ========================================= */
+@media (max-width: 768px) {
+    /* Move the central line to the far left */
+    .main-timeline::after {
+        left: 30px;
+    }
+
+    /* Make containers full width */
+    .timeline-container {
+        width: 100%;
+        padding-left: 70px; /* Space for the line and dots on left */
+        padding-right: 20px;
+    }
+
+    /* Reset Left/Right positioning */
+    .timeline-container.right, 
+    .timeline-container.left {
+        left: 0;
+    }
+
+    /* Move dots to the far left line */
+    .timeline-container.left .timeline-icon,
+    .timeline-container.right .timeline-icon {
+        left: 20px;
+        right: auto;
+    }
+
+    /* Move dates above the cards */
+    .timeline-date {
+        position: relative;
+        top: auto;
+        transform: none;
+        left: auto;
+        right: auto;
+        text-align: left;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    /* Reset logo placement rules for mobile (always logo left, text right) */
+    .timeline-container.right .timeline-content,
+    .timeline-container.left .timeline-content {
+        flex-direction: row;
+        text-align: left;
+    }
 }
 
 /* =========================================
