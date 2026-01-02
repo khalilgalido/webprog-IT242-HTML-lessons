@@ -129,10 +129,13 @@ ul {
 /* =========================================
    5. ABOUT ME (The Mitu / Split Layout)
    ========================================= */
+
 .about-content {
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Pushes text left, image right */
+    /* CHANGE: from 'center' to 'flex-end' to align items to the bottom */
+    align-items: flex-end; 
+    justify-content: space-between;
+    /* REMOVE: min-height: 80vh; - Let the big image dictate the height now */
     gap: 50px;
 }
 
@@ -246,18 +249,25 @@ ul {
 }
 
 /* --- Right Side: Image --- */
+
 .img-side {
     flex: 1;
     display: flex;
     justify-content: center;
+    /* ADD: Ensures the image sits at the very bottom of its container */
+    align-items: flex-end; 
 }
 
 .hero-img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    object-fit: cover;
-    /* Optional shadow */
+    /* NEW SIZING RULES */
+    height: 85vh; /* Sets height to 85% of the screen height. Makes it BIG. */
+    width: auto;  /* Maintains the correct aspect ratio so it doesn't stretch */
+    max-width: none; /* Removes the old size limit */
+    
+    display: block; /* Removes extra space below the image */
+    object-fit: contain; /* Ensures the whole image is visible */
+    
+    /* Keep your existing shadow */
     filter: drop-shadow(10px 10px 0px rgba(137, 152, 109, 0.2)); 
 }
 
