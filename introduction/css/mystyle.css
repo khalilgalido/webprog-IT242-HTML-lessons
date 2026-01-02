@@ -1,32 +1,37 @@
-/* --- Variables based on your Color Scheme --- */
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
 :root {
-    --bg-light: #F6F0D7;
-    --bg-accent: #C5D89D;
-    --text-accent: #9CAB84;
-    --text-dark: #89986D;
+    /* Your Color Scheme */
+    --bg-light: #F6F0D7;      /* Cream Background */
+    --bg-accent: #C5D89D;     /* Light Green Accent */
+    --text-accent: #9CAB84;   /* Medium Green */
+    --text-dark: #89986D;     /* Dark Green (Main Text) */
     --white: #ffffff;
-    --dark-grey: #333333;
+    --dark-grey: #333333;     /* Contrast for strong text */
 }
 
-/* --- Global Reset --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Main font is the casual/clean one */
+    font-family: 'Work Sans', sans-serif;
     line-height: 1.6;
     color: var(--dark-grey);
     background-color: var(--bg-light);
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-/* --- Typography --- */
+/* =========================================
+   2. TYPOGRAPHY
+   ========================================= */
 h1, h2, h3 {
     color: var(--text-dark);
 }
@@ -39,7 +44,9 @@ ul {
     list-style: none;
 }
 
-/* --- Navigation --- */
+/* =========================================
+   3. NAVIGATION
+   ========================================= */
 .header {
     background-color: var(--text-dark);
     position: fixed;
@@ -57,6 +64,7 @@ ul {
     color: var(--bg-light);
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: 'Abril Fatface', serif; /* Matching the creative vibe */
 }
 
 .nav-menu {
@@ -74,7 +82,7 @@ ul {
     color: var(--bg-accent);
 }
 
-/* Hamburger Menu (Hidden on Desktop) */
+/* Hamburger Menu (Mobile) */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -89,12 +97,14 @@ ul {
     transition: all 0.3s ease-in-out;
 }
 
-/* --- Sections General --- */
+/* =========================================
+   4. SECTIONS (GENERAL)
+   ========================================= */
 .section {
-    padding: 100px 20px 60px; /* Top padding clears the fixed header */
-    min-height: 100vh; /* Takes up full viewport height */
+    padding: 100px 20px 60px;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically centers content */
     justify-content: center;
 }
 
@@ -108,140 +118,152 @@ ul {
     text-align: center;
     margin-bottom: 40px;
     font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-family: 'Abril Fatface', serif;
+    color: var(--text-dark);
 }
 
-/* Alternating Background Colors */
 .alt-bg {
     background-color: var(--bg-accent);
 }
 
-/* --- Section Specifics --- */
-
-/* About Me */
-/* --- Updated About Section --- */
-
+/* =========================================
+   5. ABOUT ME (The Mitu / Split Layout)
+   ========================================= */
 .about-content {
     display: flex;
-    flex-wrap: wrap; /* Wraps on mobile */
-    gap: 50px;       /* increased gap for a cleaner look */
     align-items: center;
-    justify-content: center;
-    padding: 20px 0;
+    justify-content: space-between; /* Pushes text left, image right */
+    gap: 50px;
 }
 
-/* Image Styling */
-.profile-img-container {
-    flex: 0 0 250px; /* Fixed width for image container */
-}
-
-.profile-img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%; /* Keeps it circular, remove this line if you want a square */
-    /* If you don't have an image yet, this acts as the placeholder color */
-    background-color: var(--text-dark); 
-    border: 3px solid var(--text-dark);
-}
-
-/* Text Styling */
-.text-content {
+/* --- Left Side: Text --- */
+.text-side {
     flex: 1;
-    min-width: 300px;
-    text-align: left; /* Aligns text to the left like the image */
+    max-width: 600px;
 }
 
-/* The Big Headline */
-.casual-headline {
-    font-family: 'Abril Fatface', serif; /* The bold, casual serif font */
-    font-size: 3rem; /* Large text */
-    line-height: 1.2;
-    color: var(--dark-grey);
-    margin-bottom: 20px;
+/* "Creative & Clean" Tagline */
+.mini-tagline {
+    font-family: 'Work Sans', sans-serif;
+    color: var(--text-accent); /* #9CAB84 */
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
 }
 
-/* The Name Highlight Box */
-.highlight {
-    background-color: var(--text-dark); /* Using your #89986D color */
-    color: var(--bg-light); /* Using your #F6F0D7 color */
-    padding: 0 10px;
-    display: inline-block; /* Ensures the box wraps tightly around the text */
-    transform: rotate(-2deg); /* A tiny tilt to make it look "casual" */
+.mini-tagline .line {
+    height: 3px;
+    width: 40px;
+    background-color: var(--text-dark); /* #89986D */
+    display: inline-block;
 }
 
-/* The Paragraph Text */
-.casual-text {
+/* Big Hero Names */
+.hero-name {
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.top-text {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--dark-grey); /* #333 */
+    display: block;
+}
+
+.bottom-text {
+    font-family: 'Abril Fatface', serif;
+    font-size: 5rem; /* Massive size */
+    color: var(--text-dark); /* #89986D */
+    display: block;
+}
+
+.hero-description {
     font-family: 'Work Sans', sans-serif;
     font-size: 1.1rem;
-    color: var(--dark-grey);
+    color: #666;
+    margin-bottom: 35px;
+    max-width: 450px;
+    line-height: 1.6;
 }
 
-/* The Links */
-.casual-text a {
-    color: var(--text-dark);
-    font-weight: 600; /* Bold links */
-    text-decoration: none;
-    border-bottom: 2px solid var(--bg-accent); /* Underline effect */
-    transition: all 0.2s ease;
-}
-
-.casual-text a:hover {
-    background-color: var(--bg-accent);
-    color: var(--white);
-}
-
-/* Mobile Tweak */
-@media (max-width: 768px) {
-    .casual-headline {
-        font-size: 2.2rem; /* Smaller font on phone */
-        text-align: center;
-    }
-    .casual-text {
-        text-align: center;
-    }
-    /* --- Social Icons Styling --- */
-
-/* --- Social Icons Styling --- */
-
+/* --- Social Icons with POPUPS --- */
 .social-icons {
-    margin-top: 20px;
     display: flex;
-    gap: 20px;
-    align-items: center;
+    gap: 30px;
 }
 
 .social-icons a {
-    text-decoration: none; /* Removes underline from links */
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .social-icons i {
-    font-size: 2.2rem;       /* Slightly larger for visibility */
-    color: #89986D;          /* Your Dark Green */
+    font-size: 3.5rem;       /* BIG Icons */
+    color: var(--text-dark); /* #89986D */
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy */
+}
+
+/* Hover Animation */
+.social-icons a:hover i {
+    color: var(--bg-accent); /* #C5D89D */
+    transform: scale(1.2);
+}
+
+/* The Popup Tooltip */
+.social-icons a::after {
+    content: attr(data-tooltip); /* Grabs text from HTML */
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    
+    background-color: var(--dark-grey);
+    color: var(--bg-light);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.3s ease;
+    pointer-events: none;
 }
 
-/* Hover Effect - Changes to the Lighter Green */
-.social-icons i:hover {
-    color: #C5D89D;          /* Your Light Green Accent */
-    transform: translateY(-5px);
+.social-icons a:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-20px);
 }
 
-/* Mobile Tweak */
-@media (max-width: 768px) {
-    .social-icons {
-        justify-content: center;
-    }
+/* --- Right Side: Image --- */
+.img-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
+
+.hero-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+    /* Optional shadow */
+    filter: drop-shadow(10px 10px 0px rgba(137, 152, 109, 0.2)); 
 }
-    .about-content {
-        flex-direction: column; /* Stack image on top of text */
-        gap: 30px;
-    }
 
-
-/* Education Timeline Style */
+/* =========================================
+   6. EDUCATION SECTION
+   ========================================= */
 .timeline-item {
     background: var(--white);
     padding: 20px;
@@ -257,7 +279,9 @@ ul {
     margin-bottom: 10px;
 }
 
-/* Gallery Grid */
+/* =========================================
+   7. GALLERY SECTION
+   ========================================= */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -280,7 +304,9 @@ ul {
     transform: scale(1.03);
 }
 
-/* Hobbies */
+/* =========================================
+   8. HOBBIES SECTION
+   ========================================= */
 .hobbies-list {
     display: flex;
     flex-wrap: wrap;
@@ -303,7 +329,9 @@ ul {
     margin-bottom: 15px;
 }
 
-/* Resources */
+/* =========================================
+   9. RESOURCES SECTION
+   ========================================= */
 .resource-links li {
     background: var(--bg-accent);
     margin: 10px 0;
@@ -316,7 +344,9 @@ ul {
     font-weight: bold;
 }
 
-/* Footer */
+/* =========================================
+   10. FOOTER
+   ========================================= */
 footer {
     background-color: var(--text-dark);
     color: var(--bg-light);
@@ -324,23 +354,17 @@ footer {
     padding: 20px;
 }
 
-/* --- Mobile Responsiveness --- */
-@media (max-width: 768px) {
+/* =========================================
+   11. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 968px) {
+    /* Navigation */
     .hamburger {
         display: block;
     }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
     .nav-menu {
         position: fixed;
@@ -354,16 +378,30 @@ footer {
         transition: 0.3s;
         box-shadow: 0 10px 10px rgba(0,0,0,0.1);
     }
+    .nav-item { margin: 16px 0; }
+    .nav-menu.active { left: 0; }
 
-    .nav-item {
-        margin: 16px 0;
+    /* About Section Mobile */
+    .about-content {
+        flex-direction: column; /* Stack text then image */
+        text-align: center;
+        padding-top: 20px;
     }
 
-    .nav-menu.active {
-        left: 0;
-    }
+    .mini-tagline { justify-content: center; }
+    
+    .hero-description { margin: 0 auto 30px; }
 
-    .section-title {
-        font-size: 2rem;
+    .social-icons { justify-content: center; }
+
+    /* Font Sizes */
+    .top-text { font-size: 2.5rem; }
+    .bottom-text { font-size: 4rem; }
+    
+    .img-side {
+        width: 100%;
+        margin-top: 30px;
     }
+    
+    .hero-img { max-width: 300px; }
 }
