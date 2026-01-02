@@ -99,28 +99,6 @@ ul { list-style: none; }
     background-color: var(--bg-accent);
 }
 
-/* --- Education Title Highlight --- */
-#education .section-title {
-    background-color: var(--bg-light); /* Cream Background */
-    color: var(--text-dark);           /* Dark Green Text */
-    
-    /* Make it look like a button/badge */
-    display: inline-block;             /* Ensures box only wraps the text */
-    padding: 15px 40px;                /* Space inside the box */
-    border-radius: 50px;               /* Rounded "Pill" shape */
-    
-    /* Optional: Adds a shadow to make it pop */
-    box-shadow: 5px 5px 0px rgba(51, 51, 51, 0.1); 
-    
-    /* Reset margin to ensure it sits nicely */
-    margin-bottom: 60px;
-}
-
-/* Ensure the container centers the inline-block element */
-#education .container {
-    text-align: center;
-}
-
 /* Section 3: Gallery (Cream) */
 #gallery {
     background-color: var(--bg-light);
@@ -279,18 +257,14 @@ ul { list-style: none; }
 /* --- NEW TIMELINE IMAGE STYLES --- */
 
 /* The Container for the Image */
-/* =========================================
-   SCROLL ANIMATIONS FOR TIMELINE
-   ========================================= */
-
-/* 1. Base State: Hidden and shifted */
 .timeline-img {
-    opacity: 0; /* Start invisible */
-    transition: all 1s ease-out; /* Smooth 1-second slide */
-    
-    /* We keep translateY(-50%) to keep it vertically centered */
+    position: absolute;
+    top: 50%; /* Center vertically relative to the row */
+    transform: translateY(-50%); 
+    width: 250px; /* Width of the image */
+    height: 160px; /* Height of the image */
+    z-index: 1;
 }
-
 
 /* Style the actual image file */
 .timeline-img img {
