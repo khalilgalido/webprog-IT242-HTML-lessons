@@ -5,7 +5,7 @@
     --bg-light: #F6F0D7;      /* Cream */
     --bg-accent: #C5D89D;     /* Light Green */
     --text-accent: #9CAB84;   /* Medium Green */
-    --text-dark: #89986D;     /* Dark Green */
+    --text-dark: #89986D;     /* Dark Green (Main Text) */
     --white: #ffffff;
     --dark-grey: #333333;
 }
@@ -24,7 +24,7 @@ body {
     font-family: 'Work Sans', sans-serif;
     line-height: 1.6;
     color: var(--dark-grey);
-    background-color: var(--bg-light);
+    background-color: var(--bg-light); /* Default Body Color */
 }
 
 /* =========================================
@@ -66,11 +66,11 @@ ul { list-style: none; }
 }
 
 /* =========================================
-   3. SECTIONS (GENERAL)
+   3. SECTIONS (COLORS & LAYOUT)
    ========================================= */
 .section {
     padding: 100px 20px 60px;
-    min-height: 100vh; /* Ensures section is at least full screen */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,21 +86,41 @@ ul { list-style: none; }
     color: var(--text-dark);
 }
 
-.alt-bg { background-color: var(--bg-accent); }
+/* --- SECTION COLORS (The Fix) --- */
 
-/* =========================================
-   4. ABOUT ME (Fixed Overlap)
-   ========================================= */
-#about.section {
-    padding-bottom: 0;
-    /* Removed overflow:hidden so content doesn't get cut off */
+/* Section 1: About (Cream) */
+#about {
+    background-color: var(--bg-light); 
+    padding-bottom: 0; /* Allows image to sit on bottom edge */
 }
 
+/* Section 2: Education (Light Green) */
+#education {
+    background-color: var(--bg-accent);
+}
+
+/* Section 3: Gallery (Cream) */
+#gallery {
+    background-color: var(--bg-light);
+}
+
+/* Section 4: Hobbies (Light Green) */
+#hobbies {
+    background-color: var(--bg-accent);
+}
+
+/* Section 5: Resources (Cream) */
+#resources {
+    background-color: var(--bg-light);
+}
+
+/* =========================================
+   4. ABOUT ME (Split Layout)
+   ========================================= */
 .about-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    /* FIXED: Changed fixed height to min-height to prevent overlap */
     min-height: 80vh; 
     gap: 50px;
 }
@@ -138,6 +158,18 @@ ul { list-style: none; }
 .social-icons i { font-size: 3.5rem; color: var(--text-dark); transition: all 0.3s; }
 .social-icons a:hover i { color: var(--bg-accent); transform: scale(1.2); }
 
+/* Popup Tooltip */
+.social-icons a::after {
+    content: attr(data-tooltip);
+    position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-10px);
+    background-image: url('../image/s1 bg.JPG'); /* Check your file path! */
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    color: var(--bg-light); text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    padding: 10px 15px; border-radius: 5px; font-family: 'Work Sans', sans-serif; font-size: 0.9rem;
+    white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; z-index: 10;
+}
+.social-icons a:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(-20px); }
+
 /* Image Side */
 .img-side {
     flex: 1;
@@ -148,7 +180,6 @@ ul { list-style: none; }
 }
 
 .hero-img {
-    /* Fixed: Use percentage of viewport height, but allow auto width */
     height: 85vh; 
     width: auto;
     max-width: 100%;
@@ -164,7 +195,7 @@ ul { list-style: none; }
 }
 
 /* =========================================
-   5. EDUCATION (Cleaned Up - Vertical Pill Only)
+   5. EDUCATION (Vertical Pill Style)
    ========================================= */
 .pill-timeline {
     position: relative;
@@ -175,31 +206,19 @@ ul { list-style: none; }
 
 /* Central Line */
 .timeline-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background-color: var(--text-dark);
-    transform: translateX(-2px);
-    z-index: 0;
+    position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 4px; background-color: var(--text-dark); transform: translateX(-2px); z-index: 0;
 }
+/* Arrow at bottom */
 .timeline-line::after {
-    content: '';
-    position: absolute;
-    bottom: -15px; left: 50%; transform: translateX(-50%);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+    border-left: 10px solid transparent; border-right: 10px solid transparent;
     border-top: 15px solid var(--text-dark);
 }
 
 /* Rows */
 .timeline-row {
-    position: relative;
-    width: 50%;
-    padding: 20px 40px;
-    box-sizing: border-box;
-    z-index: 1;
+    position: relative; width: 50%; padding: 20px 40px; box-sizing: border-box; z-index: 1;
 }
 .timeline-row.left { left: 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
 .timeline-row.right { left: 50%; text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
@@ -221,8 +240,8 @@ ul { list-style: none; }
 
 /* Pill Card */
 .timeline-pill {
-    background-color: var(--text-dark);
-    color: var(--bg-light);
+    background-color: var(--text-dark); /* Dark Green Card */
+    color: var(--bg-light);             /* Cream Text */
     padding: 20px 30px;
     border-radius: 50px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -236,13 +255,25 @@ ul { list-style: none; }
 .timeline-pill p { font-size: 0.85rem; opacity: 0.8; line-height: 1.4; }
 
 /* =========================================
-   6. OTHER SECTIONS
+   6. GALLERY, HOBBIES & RESOURCES
    ========================================= */
-.gallery-grid, .hobbies-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.gallery-item { background: var(--text-accent); height: 200px; width: 200px; display: flex; align-items: center; justify-content: center; color: white; border-radius: 8px; }
-.hobby-card { background: var(--bg-light); padding: 30px; width: 250px; text-align: center; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.gallery-item {
+    background-color: var(--text-accent); height: 200px; display: flex; align-items: center; justify-content: center;
+    color: white; border-radius: 8px; transition: transform 0.3s;
+}
+.gallery-item:hover { transform: scale(1.03); }
+
+.hobbies-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.hobby-card {
+    background: var(--white); /* White card on Green background */
+    padding: 30px; width: 250px; text-align: center; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.hobby-card i { font-size: 2rem; color: var(--text-dark); margin-bottom: 15px; }
+
 .resource-links li { background: var(--bg-accent); margin: 10px 0; padding: 15px; border-radius: 5px; }
 .resource-links a { color: var(--dark-grey); font-weight: bold; }
+
 footer { background-color: var(--text-dark); color: var(--bg-light); text-align: center; padding: 20px; }
 
 /* =========================================
@@ -263,16 +294,20 @@ footer { background-color: var(--text-dark); color: var(--bg-light); text-align:
    ========================================= */
 @media (max-width: 968px) {
     .hamburger { display: block; }
-    .nav-menu { position: fixed; left: -100%; top: 70px; gap: 0; flex-direction: column; background-color: var(--text-dark); width: 100%; transition: 0.3s; }
+    .nav-menu { position: fixed; left: -100%; top: 70px; gap: 0; flex-direction: column; background-color: var(--text-dark); width: 100%; transition: 0.3s; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
     .nav-menu.active { left: 0; }
     
     /* About Mobile */
     .about-content { flex-direction: column; text-align: center; height: auto; padding-bottom: 50px; align-items: center; }
     .text-side { transform: translateY(0); padding-bottom: 20px; animation: none; opacity: 1; }
     .hero-img { height: auto; width: 100%; max-width: 350px; }
+    .top-text { font-size: 2.5rem; }
+    .bottom-text { font-size: 4rem; }
+    .social-icons { justify-content: center; }
     
     /* Education Mobile */
     .timeline-line { left: 30px; }
     .timeline-row { width: 100%; padding-left: 70px; padding-right: 20px; text-align: left; align-items: flex-start; }
+    .timeline-row.left, .timeline-row.right { left: 0; align-items: flex-start; text-align: left; }
     .timeline-row.left .timeline-dot, .timeline-row.right .timeline-dot { left: 20px; right: auto; }
 }
