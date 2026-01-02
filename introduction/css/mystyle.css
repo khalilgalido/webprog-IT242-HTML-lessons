@@ -291,35 +291,6 @@ ul { list-style: none; }
     /* We keep translateY(-50%) to keep it vertically centered */
 }
 
-/* 2. Specific Start Positions */
-
-/* Image on the RIGHT (in Left Rows) starts slightly further right */
-.timeline-row.left .timeline-img {
-    /* Vertical Center + Pushed 100px to the Right */
-    transform: translateY(-50%) translateX(100px);
-}
-
-/* Image on the LEFT (in Right Rows) starts slightly further left */
-.timeline-row.right .timeline-img {
-    /* Vertical Center + Pushed 100px to the Left */
-    transform: translateY(-50%) translateX(-100px);
-}
-
-/* 3. "Show" State: This class is added by JavaScript when scrolled into view */
-.timeline-img.show {
-    opacity: 1; /* Fade in */
-    /* Returns to original position (0px horizontal shift) */
-    transform: translateY(-50%) translateX(0);
-}
-
-/* Mobile Reset: Disable animation on phones to prevent glitches */
-@media (max-width: 968px) {
-    .timeline-img {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-}
 
 /* Style the actual image file */
 .timeline-img img {
