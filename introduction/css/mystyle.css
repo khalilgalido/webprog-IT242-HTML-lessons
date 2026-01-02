@@ -2,13 +2,12 @@
    1. VARIABLES & RESET
    ========================================= */
 :root {
-    /* Your Color Scheme */
-    --bg-light: #F6F0D7;      /* Cream Background */
-    --bg-accent: #C5D89D;     /* Light Green Accent */
+    --bg-light: #F6F0D7;      /* Cream */
+    --bg-accent: #C5D89D;     /* Light Green */
     --text-accent: #9CAB84;   /* Medium Green */
-    --text-dark: #89986D;     /* Dark Green (Main Text) */
+    --text-dark: #89986D;     /* Dark Green */
     --white: #ffffff;
-    --dark-grey: #333333;     /* Contrast for strong text */
+    --dark-grey: #333333;
 }
 
 * {
@@ -29,23 +28,12 @@ body {
 }
 
 /* =========================================
-   2. TYPOGRAPHY
+   2. TYPOGRAPHY & NAV
    ========================================= */
-h1, h2, h3 {
-    color: var(--text-dark);
-}
+h1, h2, h3 { color: var(--text-dark); }
+a { text-decoration: none; }
+ul { list-style: none; }
 
-a {
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-/* =========================================
-   3. NAVIGATION
-   ========================================= */
 .header {
     background-color: var(--text-dark);
     position: fixed;
@@ -66,58 +54,29 @@ ul {
     font-family: 'Abril Fatface', serif;
 }
 
-.nav-menu {
-    display: flex;
-    gap: 20px;
-}
+.nav-menu { display: flex; gap: 20px; }
+.nav-link { color: var(--bg-light); font-weight: 500; transition: color 0.3s; }
+.nav-link:hover { color: var(--bg-accent); }
 
-.nav-link {
-    color: var(--bg-light);
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-link:hover {
-    color: var(--bg-accent);
-}
-
-/* Hamburger Menu (Mobile) */
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
+/* Hamburger (Mobile) */
+.hamburger { display: none; cursor: pointer; }
 .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: var(--bg-light);
-    transition: all 0.3s ease-in-out;
+    display: block; width: 25px; height: 3px; margin: 5px auto;
+    background-color: var(--bg-light); transition: all 0.3s ease-in-out;
 }
 
 /* =========================================
-   4. SECTIONS (GENERAL)
+   3. SECTIONS (GENERAL)
    ========================================= */
 .section {
     padding: 100px 20px 60px;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensures section is at least full screen */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* SPECIAL RULE FOR ABOUT SECTION TO ALLOW BIG IMAGE */
-#about.section {
-    padding-bottom: 0; 
-    overflow: hidden; /* Prevents horizontal scroll if image is huge */
-}
-
-.container {
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-}
+.container { max-width: 1100px; width: 100%; margin: 0 auto; }
 
 .section-title {
     text-align: center;
@@ -127,30 +86,31 @@ ul {
     color: var(--text-dark);
 }
 
-.alt-bg {
-    background-color: var(--bg-accent);
-}
+.alt-bg { background-color: var(--bg-accent); }
 
 /* =========================================
-   5. ABOUT ME (Split Layout & Big Image)
+   4. ABOUT ME (Fixed Overlap)
    ========================================= */
+#about.section {
+    padding-bottom: 0;
+    /* Removed overflow:hidden so content doesn't get cut off */
+}
+
 .about-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Anchors content to the bottom */
-    height: 90vh; /* Forces section to be tall */
+    align-items: flex-end;
+    /* FIXED: Changed fixed height to min-height to prevent overlap */
+    min-height: 80vh; 
     gap: 50px;
 }
 
-/* --- Left Side: Text --- */
 .text-side {
     flex: 1;
     max-width: 600px;
-    align-self: center; /* Vertically centers the text block */
-    transform: translateY(-50px); /* Nudges text up slightly */
+    align-self: center;
+    transform: translateY(-50px);
     padding-bottom: 50px;
-    
-    /* Animation Trigger */
     animation: slideInLeft 1s ease-out forwards;
 }
 
@@ -165,631 +125,154 @@ ul {
     gap: 10px;
     text-transform: uppercase;
 }
+.mini-tagline .line { height: 3px; width: 40px; background-color: var(--text-dark); display: inline-block; }
 
-.mini-tagline .line {
-    height: 3px;
-    width: 40px;
-    background-color: var(--text-dark);
-    display: inline-block;
-}
+.hero-name { line-height: 1; margin-bottom: 25px; }
+.top-text { font-family: 'Work Sans', sans-serif; font-weight: 900; font-size: 3rem; color: var(--dark-grey); display: block; }
+.bottom-text { font-family: 'Abril Fatface', serif; font-size: 5rem; color: var(--text-dark); display: block; }
+.hero-description { font-family: 'Work Sans', sans-serif; font-size: 1.1rem; color: #666; margin-bottom: 35px; max-width: 450px; line-height: 1.6; }
 
-.hero-name {
-    line-height: 1;
-    margin-bottom: 25px;
-}
+/* Social Icons */
+.social-icons { display: flex; gap: 30px; }
+.social-icons a { position: relative; display: flex; justify-content: center; align-items: center; }
+.social-icons i { font-size: 3.5rem; color: var(--text-dark); transition: all 0.3s; }
+.social-icons a:hover i { color: var(--bg-accent); transform: scale(1.2); }
 
-.top-text {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 900;
-    font-size: 3rem;
-    color: var(--dark-grey);
-    display: block;
-}
-
-.bottom-text {
-    font-family: 'Abril Fatface', serif;
-    font-size: 5rem;
-    color: var(--text-dark);
-    display: block;
-}
-
-.hero-description {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 35px;
-    max-width: 450px;
-    line-height: 1.6;
-}
-
-/* --- Social Icons with POPUPS --- */
-.social-icons {
-    display: flex;
-    gap: 30px;
-}
-
-.social-icons a {
-    position: relative;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.social-icons i {
-    font-size: 3.5rem;
-    color: var(--text-dark);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-.social-icons a:hover i {
-    color: var(--bg-accent);
-    transform: scale(1.2);
-}
-
-/* The Image Background Popup Tooltip */
-.social-icons a::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    
-    /* IMAGE BACKGROUND LOGIC */
-    background-image: url('image/s1 bg.JPG'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    color: var(--bg-light); 
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-    
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.social-icons a:hover::after {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(-20px);
-}
-
-/* --- Right Side: Image --- */
+/* Image Side */
 .img-side {
     flex: 1;
     display: flex;
-    justify-content: center; /* Aligns image right/center */
-    align-items: flex-end;     /* Ensures image touches bottom */
+    justify-content: center;
+    align-items: flex-end;
     height: 100%;
 }
 
 .hero-img {
-    height: 85vh; /* 85% of screen height (BIG) */
+    /* Fixed: Use percentage of viewport height, but allow auto width */
+    height: 85vh; 
     width: auto;
-    max-width: none;
+    max-width: 100%;
     display: block;
     object-fit: contain;
-    
-    /* Animation Trigger */
     animation: popUpGlow 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-/* --- Add this specific interaction for the Profile Image --- */
-
-/* 1. Ensure the transition is smooth when you move the mouse on/off */
-.hero-img {
-    /* Keep your existing settings here... */
-    
-    /* ADD THIS LINE for smooth animation: */
     transition: transform 0.3s ease, filter 0.3s ease;
 }
-
-/* 2. The Hover Effect (When arrow is on the profile) */
 .hero-img:hover {
-    /* Scales up slightly (Popup) */
-    transform: scale(1.05) translateY(-10px); 
-    
-    /* Adds a strong Green Glow */
+    transform: scale(1.05) translateY(-10px);
     filter: drop-shadow(0px 0px 25px rgba(197, 216, 157, 1));
-    
-    /* Changes the mouse arrow to a pointer hand */
     cursor: pointer;
 }
 
 /* =========================================
-   6. EDUCATION SECTION (Advanced Timeline)
+   5. EDUCATION (Cleaned Up - Vertical Pill Only)
    ========================================= */
-
-/* =========================================
-   6. EDUCATION SECTION (Horizontal)
-   ========================================= */
-
-.horizontal-timeline {
-    position: relative;
-    display: flex;
-    justify-content: space-between; /* Spreads items evenly */
-    align-items: flex-start;
-    padding-top: 40px; /* Space for the date/dot */
-    width: 100%;
-}
-
-/* The Line connecting them */
-.timeline-line {
-    position: absolute;
-    top: 54px; /* Aligns with the dots */
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: var(--text-dark); /* Dark Green */
-    z-index: 0;
-}
-
-/* Individual Item Wrapper */
-.timeline-item {
-    position: relative;
-    width: 23%; /* 4 items = approx 23-25% each */
-    text-align: center;
-    z-index: 1;
-}
-
-/* The Dot */
-.timeline-dot {
-    width: 20px;
-    height: 20px;
-    background-color: var(--bg-light);
-    border: 4px solid var(--text-dark);
-    border-radius: 50%;
-    margin: 0 auto 20px auto; /* Centers dot and pushes card down */
-    position: relative;
-    z-index: 2;
-}
-
-/* The Date */
-.timeline-date {
-    position: absolute;
-    top: -30px; /* Sits above the dot */
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    color: var(--text-dark);
-    font-size: 0.9rem;
-}
-
-/* The Content Card */
-.timeline-card {
-    background: var(--white);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-align: left;
-    min-height: 150px; /* Ensures cards are roughly same height */
-    border-top: 3px solid var(--text-accent);
-}
-
-/* --- ALTERNATING LOGO LAYOUTS --- */
-
-/* Normal (Logo Left) */
-.timeline-card.layout-left {
-    flex-direction: row;
-}
-
-/* Reversed (Logo Right) */
-.timeline-card.layout-right {
-    flex-direction: row-reverse;
-    text-align: right;
-}
-
-/* Logo Placeholder */
-.school-logo {
-    width: 50px;
-    height: 50px;
-    background-color: var(--bg-accent);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-    flex-shrink: 0; /* Prevents logo from squishing */
-    color: var(--text-dark);
-}
-
-/* Text Styling */
-.school-info h3 {
-    font-family: 'Abril Fatface', serif;
-    font-size: 1rem;
-    line-height: 1.2;
-    margin-bottom: 5px;
-}
-
-.school-info h4 {
-    font-size: 0.85rem;
-    color: var(--text-accent);
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.school-info p {
-    font-size: 0.8rem;
-    line-height: 1.4;
-}
-
-/* =========================================
-   6. EDUCATION SECTION (Vertical Pill Style)
-   ========================================= */
-
 .pill-timeline {
     position: relative;
     max-width: 1000px;
     margin: 50px auto;
-    padding-bottom: 50px; /* Space for the bottom arrow */
+    padding-bottom: 50px;
 }
 
-/* --- The Vertical Line --- */
+/* Central Line */
 .timeline-line {
     position: absolute;
     left: 50%;
     top: 0;
     bottom: 0;
     width: 4px;
-    background-color: var(--text-dark); /* Dark Green Line */
-    transform: translateX(-2px); /* Perfectly center the 4px line */
+    background-color: var(--text-dark);
+    transform: translateX(-2px);
     z-index: 0;
 }
-
-/* --- The Arrow at the Bottom --- */
 .timeline-line::after {
     content: '';
     position: absolute;
-    bottom: -15px; /* Pushes arrow slightly below the line end */
-    left: 50%;
-    transform: translateX(-50%);
-    
-    /* Creating the Triangle Arrow shape */
+    bottom: -15px; left: 50%; transform: translateX(-50%);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 15px solid var(--text-dark); /* Matches line color */
+    border-top: 15px solid var(--text-dark);
 }
 
-/* --- The Rows (Hold dot, date, and card) --- */
+/* Rows */
 .timeline-row {
     position: relative;
-    width: 50%; /* Takes up half the screen width */
+    width: 50%;
     padding: 20px 40px;
     box-sizing: border-box;
     z-index: 1;
 }
+.timeline-row.left { left: 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
+.timeline-row.right { left: 50%; text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
 
-/* Left Side Positioning */
-.timeline-row.left {
-    left: 0;
-    text-align: right; /* Aligns text towards the center line */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Pushes pill to the right side of this container */
-}
-
-/* Right Side Positioning */
-.timeline-row.right {
-    left: 50%;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Pushes pill to the left side of this container */
-}
-
-/* --- The Dot on the Line --- */
+/* Dots */
 .timeline-dot {
-    position: absolute;
-    top: 30px; /* Aligns with top of the card */
-    width: 20px;
-    height: 20px;
-    background-color: var(--bg-light); /* Cream center */
-    border: 4px solid var(--text-dark); /* Dark Green rim */
-    border-radius: 50%;
-    z-index: 2;
+    position: absolute; top: 30px; width: 20px; height: 20px;
+    background-color: var(--bg-light); border: 4px solid var(--text-dark);
+    border-radius: 50%; z-index: 2;
 }
+.timeline-row.left .timeline-dot { right: -10px; }
+.timeline-row.right .timeline-dot { left: -10px; }
 
-.timeline-row.left .timeline-dot {
-    right: -10px; /* Position exactly on center line */
-}
-
-.timeline-row.right .timeline-dot {
-    left: -10px; /* Position exactly on center line */
-}
-
-/* --- The Date Label (Above the Card/Dot) --- */
+/* Date */
 .timeline-date {
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-    font-family: 'Work Sans', sans-serif;
-    /* In reference, date sits near the line */
+    font-weight: 800; color: var(--text-dark); margin-bottom: 8px;
+    font-size: 1.1rem; font-family: 'Work Sans', sans-serif;
 }
 
-/* --- The Content Card (The "Pill") --- */
+/* Pill Card */
 .timeline-pill {
-    background-color: var(--text-dark); /* Dark Green Card */
-    color: var(--bg-light);             /* Cream Text */
-    padding: 20px 30px;
-    border-radius: 50px; /* Makes it a pill shape like reference */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    max-width: 350px; /* Prevents it from getting too wide */
-    width: 100%;
-    
-    /* Transition for hover effect */
-    transition: transform 0.3s ease;
-}
-
-.timeline-pill:hover {
-    transform: translateY(-5px); /* Slight float effect on hover */
-}
-
-.timeline-pill h3 {
-    font-family: 'Abril Fatface', serif;
-    color: var(--bg-light); /* Cream Title */
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-}
-
-.timeline-pill h4 {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.timeline-pill p {
-    font-size: 0.85rem;
-    opacity: 0.8;
-    line-height: 1.4;
-}
-
-/* =========================================
-   MOBILE RESPONSIVENESS
-   ========================================= */
-@media (max-width: 768px) {
-    /* Move line to the far left */
-    .timeline-line {
-        left: 30px;
-    }
-    
-    /* Reset width to full */
-    .timeline-row {
-        width: 100%;
-        left: 0;
-        padding-left: 70px; /* Clear space for the left-side line */
-        padding-right: 20px;
-        margin-bottom: 20px;
-    }
-    
-    /* Reset alignment for both sides to simple Left Align */
-    .timeline-row.left,
-    .timeline-row.right {
-        text-align: left;
-        align-items: flex-start;
-    }
-    
-    /* Move dots to the left line */
-    .timeline-row.left .timeline-dot,
-    .timeline-row.right .timeline-dot {
-        left: 20px; /* Center on the 30px line */
-        right: auto;
-    }
-    
-    /* Adjust Pill shape for mobile (slightly less round to save space?) */
-    .timeline-pill {
-        border-radius: 20px; /* Slightly squarer on phone for more text space */
-    }
-}
-/* =========================================
-   8. HOBBIES SECTION
-   ========================================= */
-.hobbies-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.hobby-card {
-    background: var(--bg-light);
-    padding: 30px;
-    width: 250px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.hobby-card i {
-    font-size: 2rem;
-    color: var(--text-dark);
-    margin-bottom: 15px;
-}
-
-/* =========================================
-   9. RESOURCES SECTION
-   ========================================= */
-.resource-links li {
-    background: var(--bg-accent);
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 5px;
-}
-
-.resource-links a {
-    color: var(--dark-grey);
-    font-weight: bold;
-}
-
-/* =========================================
-   10. FOOTER
-   ========================================= */
-footer {
     background-color: var(--text-dark);
     color: var(--bg-light);
-    text-align: center;
-    padding: 20px;
+    padding: 20px 30px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 350px; width: 100%;
+    transition: transform 0.3s ease;
 }
+.timeline-pill:hover { transform: translateY(-5px); }
+
+.timeline-pill h3 { font-family: 'Abril Fatface', serif; color: var(--bg-light); margin-bottom: 5px; font-size: 1.2rem; }
+.timeline-pill h4 { font-size: 0.9rem; opacity: 0.9; margin-bottom: 10px; font-weight: 600; }
+.timeline-pill p { font-size: 0.85rem; opacity: 0.8; line-height: 1.4; }
 
 /* =========================================
-   11. ANIMATIONS (Entrance & Glow)
+   6. OTHER SECTIONS
    ========================================= */
+.gallery-grid, .hobbies-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.gallery-item { background: var(--text-accent); height: 200px; width: 200px; display: flex; align-items: center; justify-content: center; color: white; border-radius: 8px; }
+.hobby-card { background: var(--bg-light); padding: 30px; width: 250px; text-align: center; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.resource-links li { background: var(--bg-accent); margin: 10px 0; padding: 15px; border-radius: 5px; }
+.resource-links a { color: var(--dark-grey); font-weight: bold; }
+footer { background-color: var(--text-dark); color: var(--bg-light); text-align: center; padding: 20px; }
 
-/* Slide Text in from Left */
+/* =========================================
+   7. ANIMATIONS
+   ========================================= */
 @keyframes slideInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) translateY(-50px); /* Keeps the upward nudge */
-    }
+    0% { opacity: 0; transform: translateX(-100px); }
+    100% { opacity: 1; transform: translateX(0) translateY(-50px); }
 }
-
-/* Pop up Image with Green Glow */
 @keyframes popUpGlow {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-        filter: drop-shadow(0px 0px 0px rgba(197, 216, 157, 0));
-    }
-    70% {
-        transform: scale(1.05);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-        /* Greenish Glow */
-        filter: drop-shadow(0px 0px 20px rgba(197, 216, 157, 0.8)); 
-    }
+    0% { opacity: 0; transform: scale(0.5); filter: drop-shadow(0px 0px 0px rgba(197, 216, 157, 0)); }
+    70% { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); filter: drop-shadow(0px 0px 20px rgba(197, 216, 157, 0.8)); }
 }
 
 /* =========================================
-   12. MOBILE RESPONSIVENESS
+   8. MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 968px) {
-    /* Navigation */
     .hamburger { display: block; }
-    .hamburger.active .bar:nth-child(2) { opacity: 0; }
-    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        gap: 0;
-        flex-direction: column;
-        background-color: var(--text-dark);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-    }
-    .nav-item { margin: 16px 0; }
+    .nav-menu { position: fixed; left: -100%; top: 70px; gap: 0; flex-direction: column; background-color: var(--text-dark); width: 100%; transition: 0.3s; }
     .nav-menu.active { left: 0; }
-
-    /* About Section Mobile */
-    .about-content {
-        flex-direction: column;
-        text-align: center;
-        height: auto;
-        padding-top: 20px;
-        padding-bottom: 50px;
-        align-items: center;
-    }
     
-    .text-side {
-        transform: translateY(0); /* Remove the nudge on mobile */
-        padding-bottom: 20px;
-    }
-
-    .mini-tagline { justify-content: center; }
-    .hero-description { margin: 0 auto 30px; }
-    .social-icons { justify-content: center; }
-
-    .top-text { font-size: 2.5rem; }
-    .bottom-text { font-size: 4rem; }
+    /* About Mobile */
+    .about-content { flex-direction: column; text-align: center; height: auto; padding-bottom: 50px; align-items: center; }
+    .text-side { transform: translateY(0); padding-bottom: 20px; animation: none; opacity: 1; }
+    .hero-img { height: auto; width: 100%; max-width: 350px; }
     
-    .img-side {
-        width: 100%;
-        margin-top: 30px;
-        align-items: center;
-    }
-    
-    /* Reset huge image size for phone screens */
-    .hero-img { 
-        height: auto;
-        width: 100%;
-        max-width: 350px; 
-    }
-}
-
-/* =========================================
-   ANIMATIONS (Copy this to the bottom)
-   ========================================= */
-
-/* 1. The Keyframes (The "Recipes" for the movement) */
-
-/* Recipe for Text: Slide in from the left */
-@keyframes slideInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px); /* Starts 100px to the left */
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) translateY(-50px); /* Ends in correct spot (keeping the vertical nudge) */
-    }
-}
-
-/* Recipe for Image: Pop up + Green Glow */
-@keyframes popUpGlow {
-    0% {
-        opacity: 0;
-        transform: scale(0.5); /* Starts at half size */
-        filter: drop-shadow(0px 0px 0px rgba(197, 216, 157, 0)); /* No glow yet */
-    }
-    70% {
-        transform: scale(1.05); /* Gets slightly too big (bouncy effect) */
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1); /* Settles at normal size */
-        /* The Greenish Glow (#C5D89D) */
-        filter: drop-shadow(0px 0px 20px rgba(197, 216, 157, 0.8)); 
-    }
-}
-
-/* 2. Applying the Animations */
-
-/* Apply to the Text Side */
-.text-side {
-    /* Runs the 'slideInLeft' recipe for 1 second */
-    animation: slideInLeft 1s ease-out forwards; 
-    
-    /* Optional: Keep the manual nudge we added earlier inside the animation */
-    /* Note: I handled this inside the @keyframes above at the 100% mark */
-}
-
-/* Apply to the Profile Image */
-.hero-img {
-    /* Runs the 'popUpGlow' recipe for 1.2 seconds */
-    animation: popUpGlow 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    
-    /* Note: 'forwards' makes sure the glow stays there after the animation finishes */
+    /* Education Mobile */
+    .timeline-line { left: 30px; }
+    .timeline-row { width: 100%; padding-left: 70px; padding-right: 20px; text-align: left; align-items: flex-start; }
+    .timeline-row.left .timeline-dot, .timeline-row.right .timeline-dot { left: 20px; right: auto; }
 }
