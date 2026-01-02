@@ -1,39 +1,273 @@
-body {
-    font-family: "Helvetica", Arial, sans-serif;    
-    background-position: center;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
+/* --- Variables based on your Color Scheme --- */
+:root {
+    --bg-light: #F6F0D7;
+    --bg-accent: #C5D89D;
+    --text-accent: #9CAB84;
+    --text-dark: #89986D;
+    --white: #ffffff;
+    --dark-grey: #333333;
 }
 
-.container {width: 65%;
-    margin: 50px auto;
-    border: 1px solid #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    background-image: url('https://th.bing.com/th/id/R.5f08396b7802a37f78a44173fa972dbf?rik=S2I%2fn35pRfpqOg&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fwp1827314.jpg&ehk=H%2bKMGlg5Cdxo6Z0Gsv2%2fwlfLrtCByb7Zcn3fWkOdaE4%3d&risl=&pid=ImgRaw&r=0');
-    background-size: cover;       
-    background-position: center;  
-    background-repeat: no-repeat;
-    
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-h1 {text-align: center;
-    font-weight: 500;
-    margin-bottom: 25px;}
-
-
-
-p {
-    font-size: 20px;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    margin: 0;}
+    color: var(--dark-grey);
+    background-color: var(--bg-light);
+}
 
-img {width: 100%;
-    max-width: 480px;
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Navigation --- */
+.header {
+    background-color: var(--text-dark);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    color: var(--bg-light);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: var(--bg-light);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--bg-accent);
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
     display: block;
-    margin: 25px auto 0 auto;
-    border-radius: 4px;
-    border: 1px solid #dcdcdc;}
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--bg-light);
+    transition: all 0.3s ease-in-out;
+}
 
+/* --- Sections General --- */
+.section {
+    padding: 100px 20px 60px; /* Top padding clears the fixed header */
+    min-height: 100vh; /* Takes up full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Alternating Background Colors */
+.alt-bg {
+    background-color: var(--bg-accent);
+}
+
+/* --- Section Specifics --- */
+
+/* About Me */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img-placeholder {
+    width: 250px;
+    height: 250px;
+    background-color: var(--text-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Education Timeline Style */
+.timeline-item {
+    background: var(--white);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--text-dark);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.timeline-item .date {
+    font-weight: bold;
+    color: var(--text-accent);
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery-item {
+    background-color: var(--text-accent);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+/* Hobbies */
+.hobbies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hobby-card {
+    background: var(--bg-light);
+    padding: 30px;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.hobby-card i {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+/* Resources */
+.resource-links li {
+    background: var(--bg-accent);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.resource-links a {
+    color: var(--dark-grey);
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-dark);
+    color: var(--bg-light);
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--text-dark);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
 }

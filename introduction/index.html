@@ -1,33 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="css/mystyle.css">
-<title>Khalil and Joshmar Collaboration </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<div class="container">
+    <header class="header">
+        <a href="#" class="logo">MyPortfolio</a>
+        
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="#hobbies" class="nav-link">Hobbies</a></li>
+                <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
 
-<h1>Khalil and JOSHMAR Personal Profile</h1>
-<p>
-    <b>About Me</b><br>
-    Fun guy, obviously I love the game of basketball, and I'm a car guy.<br><br>
+    <section id="about" class="section">
+        <div class="container">
+            <h1 class="section-title">About Me</h1>
+            <div class="about-content">
+                <div class="profile-img-placeholder">
+                    <p>Insert Image</p>
+                </div>
+                <div class="text-content">
+                    <h2>Hello, I'm [Your Name]</h2>
+                    <p>
+                        Write a brief introduction about yourself here. Mention your profession, 
+                        where you are based, and your primary goals.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod 
+                        tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <b>Education / Achievements</b><br>
-    Course:</b><br>Informational Technology<br><br>
+    <section id="education" class="section alt-bg">
+        <div class="container">
+            <h1 class="section-title">Education</h1>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Degree / Course Name</h3>
+                    <span class="date">2020 - 2024</span>
+                    <p>University Name</p>
+                    <p>Brief description of achievements or major.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>High School / Certificate</h3>
+                    <span class="date">2016 - 2020</span>
+                    <p>School Name</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <b>IT Experience</b><br><br>
+    <section id="gallery" class="section">
+        <div class="container">
+            <h1 class="section-title">Gallery</h1>
+            <div class="gallery-grid">
+                <div class="gallery-item">Image 1 Placeholder</div>
+                <div class="gallery-item">Image 2 Placeholder</div>
+                <div class="gallery-item">Image 3 Placeholder</div>
+                <div class="gallery-item">Image 4 Placeholder</div>
+            </div>
+        </div>
+    </section>
 
-    <b>Hobbies & Interests</b><br><br>
+    <section id="hobbies" class="section alt-bg">
+        <div class="container">
+            <h1 class="section-title">Hobbies & Interests</h1>
+            <div class="hobbies-list">
+                <div class="hobby-card">
+                    <i class="fas fa-camera"></i> <h3>Photography</h3>
+                    <p>Description of hobby.</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Coding</h3>
+                    <p>Description of hobby.</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Reading</h3>
+                    <p>Description of hobby.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <b>Goals In Life / Dream</b><br><br>
+    <section id="resources" class="section">
+        <div class="container">
+            <h1 class="section-title">Resources</h1>
+            <p>Here are some helpful links and downloadable files.</p>
+            <ul class="resource-links">
+                <li><a href="#" target="_blank">Download Resume (PDF)</a></li>
+                <li><a href="#" target="_blank">Link to GitHub Project</a></li>
+                <li><a href="#" target="_blank">Link to Design Portfolio</a></li>
+            </ul>
+        </div>
+    </section>
 
-    <b>Picture Gallery</b><br>
-    <img src="https://tse3.mm.bing.net/th/id/OIP.czonCC0IfwwC3EVn4piLJgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"alt="Kirkified YN">
-    </p>
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
 
-</div>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
