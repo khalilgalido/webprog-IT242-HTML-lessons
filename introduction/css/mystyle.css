@@ -433,3 +433,58 @@ footer {
     
     .hero-img { max-width: 300px; }
 }
+
+/* =========================================
+   ANIMATIONS (Copy this to the bottom)
+   ========================================= */
+
+/* 1. The Keyframes (The "Recipes" for the movement) */
+
+/* Recipe for Text: Slide in from the left */
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px); /* Starts 100px to the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(-50px); /* Ends in correct spot (keeping the vertical nudge) */
+    }
+}
+
+/* Recipe for Image: Pop up + Green Glow */
+@keyframes popUpGlow {
+    0% {
+        opacity: 0;
+        transform: scale(0.5); /* Starts at half size */
+        filter: drop-shadow(0px 0px 0px rgba(197, 216, 157, 0)); /* No glow yet */
+    }
+    70% {
+        transform: scale(1.05); /* Gets slightly too big (bouncy effect) */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Settles at normal size */
+        /* The Greenish Glow (#C5D89D) */
+        filter: drop-shadow(0px 0px 20px rgba(197, 216, 157, 0.8)); 
+    }
+}
+
+/* 2. Applying the Animations */
+
+/* Apply to the Text Side */
+.text-side {
+    /* Runs the 'slideInLeft' recipe for 1 second */
+    animation: slideInLeft 1s ease-out forwards; 
+    
+    /* Optional: Keep the manual nudge we added earlier inside the animation */
+    /* Note: I handled this inside the @keyframes above at the 100% mark */
+}
+
+/* Apply to the Profile Image */
+.hero-img {
+    /* Runs the 'popUpGlow' recipe for 1.2 seconds */
+    animation: popUpGlow 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    
+    /* Note: 'forwards' makes sure the glow stays there after the animation finishes */
+}
