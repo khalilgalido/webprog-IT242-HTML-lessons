@@ -10,21 +10,14 @@
     --dark-grey: #333333;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Work Sans', sans-serif;
     line-height: 1.6;
     color: var(--dark-grey);
-    background-color: var(--bg-light); /* Default Body Color */
+    background-color: var(--bg-light);
 }
 
 /* =========================================
@@ -34,472 +27,130 @@ h1, h2, h3 { color: var(--text-dark); }
 a { text-decoration: none; }
 ul { list-style: none; }
 
-
 .header {
     background-color: var(--text-dark);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: fixed; width: 100%; top: 0; z-index: 1000;
+    padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.logo {
-    color: var(--bg-light);
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Abril Fatface', serif;
-}
+.logo { color: var(--bg-light); font-size: 1.5rem; font-weight: bold; font-family: 'Abril Fatface', serif; }
 
 .nav-menu { display: flex; gap: 20px; }
 .nav-link { color: var(--bg-light); font-weight: 500; transition: color 0.3s; }
 .nav-link:hover { color: var(--bg-accent); }
+.nav-menu.active { left: 0; }
 
-/* Hamburger (Mobile) */
 .hamburger { display: none; cursor: pointer; }
-.bar {
-    display: block; width: 25px; height: 3px; margin: 5px auto;
-    background-color: var(--bg-light); transition: all 0.3s ease-in-out;
-}
+.bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--bg-light); transition: all 0.3s ease-in-out; }
 
 /* =========================================
-   3. SECTIONS (COLORS & LAYOUT)
+   3. SECTIONS
    ========================================= */
-.section {
-    padding: 100px 20px 60px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+.section { padding: 100px 20px 60px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
 .container { max-width: 1100px; width: 100%; margin: 0 auto; }
+.section-title { text-align: center; margin-bottom: 40px; font-size: 2.5rem; font-family: 'Abril Fatface', serif; color: var(--text-dark); }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    font-family: 'Abril Fatface', serif;
-    color: var(--text-dark);
-}
-
-/* --- SECTION COLORS (The Fix) --- */
-
-/* Section 1: About (Cream) */
-#about {
-    /* Fallback color (shows if image doesn't load) */
-    background-color: var(--bg-light); 
-    
-    /* --- INSERT YOUR IMAGE PATH HERE --- */
-    /* Example: url('image/my-background.jpg'); */
-    background-image: url('s1 bg.JPG'); 
-    
-    /* Essential settings for a full-cover background */
-    background-size: cover;      /* Stretches image to fill the whole section */
-    background-position: center; /* Keeps the main part of the image visible */
-    background-repeat: no-repeat;
-    
-    /* Keep your existing padding rule */
-    padding-bottom: 0; 
-}
-
-/* Section 2: Education (Light Green) */
-#education {
-    background-color: var(--bg-accent);
-}
-/* --- Education Title Highlight --- */
-#education .section-title {
-    background-color: var(--bg-light); /* Cream Background */
-    color: var(--text-dark);           /* Dark Green Text */
-    
-    /* Make it look like a button/badge */
-    display: inline-block;             /* Ensures box only wraps the text */
-    padding: 15px 40px;                /* Space inside the box */
-    border-radius: 50px;               /* Rounded "Pill" shape */
-    
-    /* Optional: Adds a shadow to make it pop */
-    box-shadow: 5px 5px 0px rgba(51, 51, 51, 0.1); 
-    
-    /* Reset margin to ensure it sits nicely */
-    margin-bottom: 60px;
-}
-
-/* Ensure the container centers the inline-block element */
-#education .container {
-    text-align: center;
-}
-
-/* Section 3: Gallery (Cream) */
-#gallery {
-    background-color: var(--bg-light);
-}
-
-/* Section 4: Hobbies (Light Green) */
-#hobbies {
-    background-color: var(--bg-accent);
-}
-
-/* Section 5: Resources (Cream) */
-#resources {
-    background-color: var(--bg-light);
-}
+/* Section Specific Colors */
+#about { background-color: var(--bg-light); background-image: url('../image/s1 bg.JPG'); background-size: cover; background-position: center; padding-bottom: 0; }
+#education { background-color: var(--bg-accent); }
+#gallery { background-color: var(--bg-light); }
+#hobbies { background-color: var(--bg-accent); }
+#resources { background-color: var(--bg-light); }
 
 /* =========================================
-   4. ABOUT ME (Split Layout)
+   4. ABOUT ME
    ========================================= */
-.about-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    min-height: 80vh; 
-    gap: 50px;
-}
-
-.text-side {
-    flex: 1;
-    max-width: 600px;
-    align-self: center;
-    transform: translateY(-50px);
-    padding-bottom: 50px;
-    animation: slideInLeft 1s ease-out forwards;
-}
-
-.mini-tagline {
-    font-family: 'Work Sans', sans-serif;
-    color: var(--text-accent);
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-transform: uppercase;
-}
+.about-content { display: flex; justify-content: space-between; align-items: flex-end; min-height: 80vh; gap: 50px; }
+.text-side { flex: 1; max-width: 600px; align-self: center; transform: translateY(-50px); padding-bottom: 50px; animation: slideInLeft 1s ease-out forwards; }
+.mini-tagline { font-family: 'Work Sans', sans-serif; color: var(--text-accent); font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; text-transform: uppercase; }
 .mini-tagline .line { height: 3px; width: 40px; background-color: var(--text-dark); display: inline-block; }
-
 .hero-name { line-height: 1; margin-bottom: 25px; }
 .top-text { font-family: 'Work Sans', sans-serif; font-weight: 900; font-size: 3rem; color: var(--dark-grey); display: block; }
 .bottom-text { font-family: 'Abril Fatface', serif; font-size: 5rem; color: var(--text-dark); display: block; }
-.hero-description { font-family: 'Work Sans', sans-serif; font-size: 1.1rem; color: #666; margin-bottom: 35px; max-width: 450px; line-height: 1.6; }
-
-/* Social Icons */
 .social-icons { display: flex; gap: 30px; }
-.social-icons a { position: relative; display: flex; justify-content: center; align-items: center; }
 .social-icons i { font-size: 3.5rem; color: var(--text-dark); transition: all 0.3s; }
 .social-icons a:hover i { color: var(--bg-accent); transform: scale(1.2); }
-
-/* Popup Tooltip */
-.social-icons a::after {
-    content: attr(data-tooltip);
-    position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-10px);
-    background-size: cover; background-position: center; background-repeat: no-repeat;
-    color: var(--bg-light); text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-    padding: 10px 15px; border-radius: 5px; font-family: 'Work Sans', sans-serif; font-size: 0.9rem;
-    white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; z-index: 10;
-}
-.social-icons a:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(-20px); }
-
-/* Image Side */
-.img-side {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100%;
-}
-
-.hero-img {
-    height: 85vh; 
-    width: auto;
-    max-width: 100%;
-    display: block;
-    object-fit: contain;
-    animation: popUpGlow 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-.hero-img:hover {
-    transform: scale(1.05) translateY(-10px);
-    filter: drop-shadow(0px 0px 25px rgba(197, 216, 157, 1));
-    cursor: pointer;
-}
+.img-side { flex: 1; display: flex; justify-content: center; align-items: flex-end; height: 100%; }
+.hero-img { height: 85vh; width: auto; max-width: 100%; display: block; object-fit: contain; animation: popUpGlow 1.2s forwards; transition: transform 0.3s, filter 0.3s; }
+.hero-img:hover { transform: scale(1.05) translateY(-10px); filter: drop-shadow(0px 0px 25px rgba(197, 216, 157, 1)); cursor: pointer; }
 
 /* =========================================
-   5. EDUCATION (Vertical Pill Style)
+   5. EDUCATION
    ========================================= */
-.pill-timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: 50px auto;
-    padding-bottom: 50px;
-}
+#education .section-title { background-color: var(--bg-light); color: var(--text-dark); display: inline-block; padding: 15px 40px; border-radius: 50px; box-shadow: 5px 5px 0px rgba(51, 51, 51, 0.1); margin-bottom: 60px; }
+#education .container { text-align: center; }
 
-/* Central Line */
-.timeline-line {
-    position: absolute; left: 50%; top: 0; bottom: 0;
-    width: 4px; background-color: var(--text-dark); transform: translateX(-2px); z-index: 0;
-}
-/* Arrow at bottom */
-.timeline-line::after {
-    content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
-    border-left: 10px solid transparent; border-right: 10px solid transparent;
-    border-top: 15px solid var(--text-dark);
-}
-
-/* Rows */
-.timeline-row {
-    position: relative; width: 50%; padding: 20px 40px; box-sizing: border-box; z-index: 1;
-}
+.pill-timeline { position: relative; max-width: 1000px; margin: 50px auto; padding-bottom: 50px; }
+.timeline-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background-color: var(--text-dark); transform: translateX(-2px); z-index: 0; }
+.timeline-line::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid var(--text-dark); }
+.timeline-row { position: relative; width: 50%; padding: 20px 40px; box-sizing: border-box; z-index: 1; }
 .timeline-row.left { left: 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
 .timeline-row.right { left: 50%; text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
-
-/* Dots */
-.timeline-dot {
-    position: absolute; top: 30px; width: 20px; height: 20px;
-    background-color: var(--bg-light); border: 4px solid var(--text-dark);
-    border-radius: 50%; z-index: 2;
-}
+.timeline-dot { position: absolute; top: 30px; width: 20px; height: 20px; background-color: var(--bg-light); border: 4px solid var(--text-dark); border-radius: 50%; z-index: 2; }
 .timeline-row.left .timeline-dot { right: -10px; }
 .timeline-row.right .timeline-dot { left: -10px; }
-
-/* Date */
-.timeline-date {
-    font-weight: 800; color: var(--text-dark); margin-bottom: 8px;
-    font-size: 1.1rem; font-family: 'Work Sans', sans-serif;
-}
-
-/* Pill Card */
-.timeline-pill {
-    background-color: var(--text-dark); /* Dark Green Card */
-    color: var(--bg-light);             /* Cream Text */
-    padding: 20px 30px;
-    border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    max-width: 350px; width: 100%;
-    transition: transform 0.3s ease;
-}
+.timeline-date { font-weight: 800; color: var(--text-dark); margin-bottom: 8px; font-size: 1.1rem; }
+.timeline-pill { background-color: var(--text-dark); color: var(--bg-light); padding: 20px 30px; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 350px; width: 100%; transition: transform 0.3s ease; }
 .timeline-pill:hover { transform: translateY(-5px); }
+.timeline-img { position: absolute; top: 50%; transform: translateY(-50%); width: 250px; height: 160px; z-index: 1; }
+.timeline-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; border: 4px solid var(--text-dark); box-shadow: 5px 5px 0px rgba(137, 152, 109, 0.4); transition: transform 0.3s ease; }
+.timeline-row.left .timeline-img { left: 115%; }
+.timeline-row.right .timeline-img { right: 115%; }
 
-.timeline-pill h3 { font-family: 'Abril Fatface', serif; color: var(--bg-light); margin-bottom: 5px; font-size: 1.2rem; }
-.timeline-pill h4 { font-size: 0.9rem; opacity: 0.9; margin-bottom: 10px; font-weight: 600; }
-.timeline-pill p { font-size: 0.85rem; opacity: 0.8; line-height: 1.4; }
-
-/* --- NEW TIMELINE IMAGE STYLES --- */
-
-/* The Container for the Image */
-.timeline-img {
-    position: absolute;
-    top: 50%; /* Center vertically relative to the row */
-    transform: translateY(-50%); 
-    width: 250px; /* Width of the image */
-    height: 160px; /* Height of the image */
-    z-index: 1;
-}
-
-/* Style the actual image file */
-.timeline-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: fit; /* Ensures image fills box without stretching */
-    border-radius: 15px; /* Matches your pill rounded look */
-    border: 4px solid var(--text-dark); /* Adds a Green border */
-    box-shadow: 5px 5px 0px rgba(137, 152, 109, 0.4); /* Nice shadow */
-    transition: transform 0.3s ease;
-}
-
-.timeline-img img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* --- POSITIONING LOGIC --- */
-
-/* For LEFT rows, push image to the RIGHT side */
-.timeline-row.left .timeline-img {
-    left: 115%; /* Moves it past the center line to the empty right side */
-    /* 100% would be the center line, so 115% adds a gap */
-}
-
-/* For RIGHT rows, push image to the LEFT side */
-.timeline-row.right .timeline-img {
-    right: 115%; /* Moves it past the center line to the empty left side */
-}
-
-/* --- MOBILE UPDATE (Important!) --- */
-/* On mobile, there is no "empty side", so we move the image inside the card or hide it */
-@media (max-width: 968px) {
-    .timeline-img {
-        position: static; /* Stop floating */
-        transform: none;
-        width: 100%; /* Full width */
-        height: 200px;
-        margin-top: 20px; /* Space between pill and image */
-    }
-
-    .timeline-row.left .timeline-img,
-    .timeline-row.right .timeline-img {
-        left: auto;
-        right: auto;
-    }
-}
 /* =========================================
-   6. GALLERY, HOBBIES & RESOURCES
+   6. GALLERY (Flexbox + Highlights + Lightbox)
    ========================================= */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-.gallery-item {
-    background-color: var(--text-accent); height: 200px; display: flex; align-items: center; justify-content: center;
-    color: white; border-radius: 8px; transition: transform 0.3s;
-}
-.gallery-item:hover { transform: scale(1.03); }
+.filter-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+.btn-custom-filter { padding: 12px 30px; border: 2px solid var(--text-dark); color: var(--text-dark); font-weight: 700; background-color: transparent; border-radius: 50px; transition: all 0.3s ease; text-transform: uppercase; cursor: pointer; }
+.btn-custom-filter.active, .btn-custom-filter:hover { background-color: var(--text-dark); color: var(--bg-light); box-shadow: 0 0 15px rgba(137, 152, 109, 0.6); transform: translateY(-2px); }
 
+.gallery-flex-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.gallery-item { flex: 0 0 calc(25% - 20px); max-width: 300px; aspect-ratio: 1 / 1; }
+.gallery-wrap { width: 100%; height: 100%; border-radius: 15px; overflow: hidden; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.15); cursor: pointer; background-color: var(--text-dark); }
+.gallery-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.gallery-wrap .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(137, 152, 109, 0.85); display: flex; justify-content: center; align-items: center; opacity: 0; transition: all 0.3s ease; }
+.gallery-wrap .overlay i { color: var(--bg-light); font-size: 2rem; transform: scale(0); transition: all 0.3s 0.1s ease; }
+.gallery-wrap:hover img { transform: scale(1.1); }
+.gallery-wrap:hover .overlay { opacity: 1; }
+.gallery-wrap:hover .overlay i { transform: scale(1); }
+.gallery-item.hide { display: none; }
+.gallery-item.show { animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+
+/* Custom Lightbox */
+.lightbox-modal { display: none; position: fixed; z-index: 2000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+.lightbox-content { margin: auto; display: block; width: 80%; max-width: 900px; max-height: 80vh; object-fit: contain; animation: zoomIn 0.3s; }
+.close-modal { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.close-modal:hover { color: #bbb; }
+
+/* =========================================
+   7. HOBBIES & FOOTER
+   ========================================= */
 .hobbies-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.hobby-card {
-    background: var(--white); /* White card on Green background */
-    padding: 30px; width: 250px; text-align: center; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-.hobby-card i { font-size: 2rem; color: var(--text-dark); margin-bottom: 15px; }
-
+.hobby-card { background: var(--white); padding: 30px; width: 250px; text-align: center; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 .resource-links li { background: var(--bg-accent); margin: 10px 0; padding: 15px; border-radius: 5px; }
 .resource-links a { color: var(--dark-grey); font-weight: bold; }
-
 footer { background-color: var(--text-dark); color: var(--bg-light); text-align: center; padding: 20px; }
 
 /* =========================================
-   7. ANIMATIONS
+   8. ANIMATIONS & MOBILE
    ========================================= */
-@keyframes slideInLeft {
-    0% { opacity: 0; transform: translateX(-100px); }
-    100% { opacity: 1; transform: translateX(0) translateY(-50px); }
-}
-@keyframes popUpGlow {
-    0% { opacity: 0; transform: scale(0.5); filter: drop-shadow(0px 0px 0px rgba(197, 216, 157, 0)); }
-    70% { transform: scale(1.05); }
-    100% { opacity: 1; transform: scale(1); filter: drop-shadow(0px 0px 20px rgba(197, 216, 157, 0.8)); }
-}
+@keyframes slideInLeft { 0% { opacity: 0; transform: translateX(-100px); } 100% { opacity: 1; transform: translateX(0) translateY(-50px); } }
+@keyframes popUpGlow { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0px 0px 20px rgba(197, 216, 157, 0.8)); } }
+@keyframes slideUp { 0% { opacity: 0; transform: translateY(50px) scale(0.9); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes zoomIn { from { transform: scale(0) } to { transform: scale(1) } }
 
-/* =========================================
-   8. MOBILE RESPONSIVENESS
-   ========================================= */
 @media (max-width: 968px) {
     .hamburger { display: block; }
     .nav-menu { position: fixed; left: -100%; top: 70px; gap: 0; flex-direction: column; background-color: var(--text-dark); width: 100%; transition: 0.3s; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
-    .nav-menu.active { left: 0; }
-    
-    /* About Mobile */
     .about-content { flex-direction: column; text-align: center; height: auto; padding-bottom: 50px; align-items: center; }
     .text-side { transform: translateY(0); padding-bottom: 20px; animation: none; opacity: 1; }
     .hero-img { height: auto; width: 100%; max-width: 350px; }
-    .top-text { font-size: 2.5rem; }
-    .bottom-text { font-size: 4rem; }
-    .social-icons { justify-content: center; }
-    
-    /* Education Mobile */
     .timeline-line { left: 30px; }
     .timeline-row { width: 100%; padding-left: 70px; padding-right: 20px; text-align: left; align-items: flex-start; }
     .timeline-row.left, .timeline-row.right { left: 0; align-items: flex-start; text-align: left; }
     .timeline-row.left .timeline-dot, .timeline-row.right .timeline-dot { left: 20px; right: auto; }
+    .timeline-img { position: static; transform: none; width: 100%; height: 200px; margin-top: 20px; }
+    .gallery-item { flex: 0 0 calc(50% - 20px); }
 }
-
-
-/* =========================================
-   9. GALLERY SECTION STYLES
-   ========================================= */
-
-/* --- Custom Filter Buttons --- */
-.btn-custom-filter {
-    margin: 5px;
-    padding: 10px 25px;
-    border: 2px solid var(--text-dark); /* Dark Green border */
-    color: var(--text-dark);
-    font-weight: 600;
-    font-family: 'Work Sans', sans-serif;
-    background-color: transparent;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-/* Active & Hover States */
-.btn-custom-filter.active,
-.btn-custom-filter:hover {
-    background-color: var(--text-dark); /* Dark Green background */
-    color: var(--bg-light);            /* Cream text */
-}
-
-/* --- Gallery Item Wrapper --- */
-.gallery-wrap {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    cursor: pointer;
-    background-color: var(--text-dark); /* Fallback color */
-}
-
-.gallery-wrap img {
-    width: 100%;
-    height: 250px; /* Fixed height so grid stays neat */
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-/* --- The Hover Overlay --- */
-.gallery-wrap .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Semi-transparent Dark Green */
-    background-color: rgba(137, 152, 109, 0.85); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* Hidden by default */
-    transition: all 0.3s ease;
-}
-
-/* The Search Icon */
-.gallery-wrap .overlay i {
-    color: var(--bg-light);
-    font-size: 2rem;
-    transform: scale(0); /* Zoomed out */
-    transition: all 0.3s 0.1s ease;
-}
-
-/* --- Hover Effects --- */
-.gallery-wrap:hover img {
-    transform: scale(1.1); /* Zoom image */
-}
-
-.gallery-wrap:hover .overlay {
-    opacity: 1; /* Show overlay */
-}
-
-.gallery-wrap:hover .overlay i {
-    transform: scale(1); /* Pop icon in */
-}
-
-/* --- Animation: Slide Up Effect --- */
-.gallery-item.hide {
-    display: none;
-}
-
-/* The 'show' class triggers the animation */
-.gallery-item.show {
-    /* Animation name, duration, and curve */
-    animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-/* The Keyframes: Start invisible & lower, end visible & in place */
-@keyframes slideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px) scale(0.9); /* Starts lower and slightly smaller */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);      /* Ends in normal position */
-    }
-}
+@media (max-width: 480px) { .gallery-item { flex: 0 0 100%; } }
