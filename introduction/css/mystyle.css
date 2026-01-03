@@ -401,3 +401,105 @@ footer { background-color: var(--text-dark); color: var(--bg-light); text-align:
     .timeline-row.left, .timeline-row.right { left: 0; align-items: flex-start; text-align: left; }
     .timeline-row.left .timeline-dot, .timeline-row.right .timeline-dot { left: 20px; right: auto; }
 }
+
+
+/* =========================================
+   9. GALLERY SECTION STYLES
+   ========================================= */
+
+/* --- Custom Filter Buttons --- */
+.btn-custom-filter {
+    margin: 5px;
+    padding: 10px 25px;
+    border: 2px solid var(--text-dark); /* Dark Green border */
+    color: var(--text-dark);
+    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Active & Hover States */
+.btn-custom-filter.active,
+.btn-custom-filter:hover {
+    background-color: var(--text-dark); /* Dark Green background */
+    color: var(--bg-light);            /* Cream text */
+}
+
+/* --- Gallery Item Wrapper --- */
+.gallery-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    background-color: var(--text-dark); /* Fallback color */
+}
+
+.gallery-wrap img {
+    width: 100%;
+    height: 250px; /* Fixed height so grid stays neat */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* --- The Hover Overlay --- */
+.gallery-wrap .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Semi-transparent Dark Green */
+    background-color: rgba(137, 152, 109, 0.85); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    transition: all 0.3s ease;
+}
+
+/* The Search Icon */
+.gallery-wrap .overlay i {
+    color: var(--bg-light);
+    font-size: 2rem;
+    transform: scale(0); /* Zoomed out */
+    transition: all 0.3s 0.1s ease;
+}
+
+/* --- Hover Effects --- */
+.gallery-wrap:hover img {
+    transform: scale(1.1); /* Zoom image */
+}
+
+.gallery-wrap:hover .overlay {
+    opacity: 1; /* Show overlay */
+}
+
+.gallery-wrap:hover .overlay i {
+    transform: scale(1); /* Pop icon in */
+}
+
+/* --- Animation: Slide Up Effect --- */
+.gallery-item.hide {
+    display: none;
+}
+
+/* The 'show' class triggers the animation */
+.gallery-item.show {
+    /* Animation name, duration, and curve */
+    animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* The Keyframes: Start invisible & lower, end visible & in place */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9); /* Starts lower and slightly smaller */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);      /* Ends in normal position */
+    }
+}
