@@ -54,9 +54,9 @@ ul { list-style: none; }
 
 /* Section Specific Colors */
 #about { background-color: var(--bg-light); background-image: url('s1 bg.JPG'); background-size: cover; background-position: center; padding-bottom: 0; }
-#education { background-color: var(--bg-accent); }
-#gallery { background-color: var(--bg-light); }
-#hobbies { background-color: var(--bg-accent); }
+#education { background-color: var(--bg-accent); background-image: url('s2bg.JPG'); background-size: cover; background-position: center; padding-bottom: 0; }
+#gallery { background-color: var(--bg-light); background-image: url('s3.JPG'); background-size: cover; background-position: center; padding-bottom: 0; }
+#hobbies { background-color: var(--bg-accent); background-image: url('s4bg.JPG'); background-size: cover; background-position: center; padding-bottom: 0; }
 #resources { background-color: var(--bg-light); }
 
 /* =========================================
