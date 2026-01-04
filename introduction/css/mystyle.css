@@ -129,7 +129,8 @@ ul { list-style: none; }
 /* =========================================
    7. HOBBIES & FOOTER
    ========================================= */
-
+#hobbies .section-title { background-color: var(--bg-light); color: var(--text-dark); display: inline-block; padding: 15px 40px; border-radius: 50px; box-shadow: 5px 5px 0px rgba(51, 51, 51, 0.1); margin-bottom: 60px; }
+#hobbies .container { text-align: center; }
 .hobbies-list {
     display: flex;
     flex-wrap: wrap;
