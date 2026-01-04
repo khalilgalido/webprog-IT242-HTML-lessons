@@ -84,4 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // =========================================
+    // 4. SCROLL ANIMATION (Hobbies & Others)
+    // =========================================
+    const observerOptions = {
+        threshold: 0.2 // Trigger when 20% of the item is visible
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, observerOptions);
+
+    // Tell observer to watch Hobby Cards
+    const hobbyCards = document.querySelectorAll('.hobby-card');
+    hobbyCards.forEach(card => scrollObserver.observe(card));
+    
+    // (Optional) You can also tell it to watch Gallery items if you want them to animate on scroll too
+    const scrollGalleryItems = document.querySelectorAll('.gallery-item');
+    scrollGalleryItems.forEach(item => scrollObserver.observe(item));
 });

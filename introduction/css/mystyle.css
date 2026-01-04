@@ -102,6 +102,8 @@ ul { list-style: none; }
 /* =========================================
    6. GALLERY (Flexbox + Highlights + Lightbox)
    ========================================= */
+#gallery .section-title { background-color: var(--bg-light); color: var(--text-dark); display: inline-block; padding: 15px 40px; border-radius: 50px; box-shadow: 5px 5px 0px rgba(51, 51, 51, 0.1); margin-bottom: 60px; }
+#gallery .container { text-align: center; }
 .filter-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 .btn-custom-filter { padding: 12px 30px; border: 2px solid var(--text-dark); color: var(--text-dark); font-weight: 700; background-color: transparent; border-radius: 50px; transition: all 0.3s ease; text-transform: uppercase; cursor: pointer; }
 .btn-custom-filter.active, .btn-custom-filter:hover { background-color: var(--text-dark); color: var(--bg-light); box-shadow: 0 0 15px rgba(137, 152, 109, 0.6); transform: translateY(-2px); }
@@ -127,10 +129,83 @@ ul { list-style: none; }
 /* =========================================
    7. HOBBIES & FOOTER
    ========================================= */
-.hobbies-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.hobby-card { background: var(--white); padding: 30px; width: 250px; text-align: center; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-.resource-links li { background: var(--bg-accent); margin: 10px 0; padding: 15px; border-radius: 5px; }
-.resource-links a { color: var(--dark-grey); font-weight: bold; }
+
+.hobbies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px; /* More space between the two cards */
+}
+
+.hobby-card {
+    background: var(--white);
+    padding: 40px 30px;
+    width: 45%; /* Wider cards since there are only 2 */
+    min-width: 300px; /* Don't let them get too small on phones */
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    
+    /* Animation Setup */
+    opacity: 0; /* Hidden initially (JS will show it) */
+    transform: translateY(50px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Animation: Float Up */
+.hobby-card:hover {
+    transform: translateY(-10px); /* Lifts up */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Icon Styling */
+.hobby-card i {
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Icon Hover Animation: Spin/Pop */
+.hobby-card:hover i {
+    transform: scale(1.2) rotate(10deg);
+    color: var(--text-accent);
+}
+
+.hobby-card h3 {
+    font-family: 'Abril Fatface', serif;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.hobby-card p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Class added by JS to trigger Entrance Animation */
+.hobby-card.show {
+    animation: slideUpFade 0.8s forwards;
+}
+
+/* The Entrance Animation Keyframes */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile: Stack them */
+@media (max-width: 768px) {
+    .hobby-card {
+        width: 100%; /* Full width on phone */
+    }
+}
 footer { background-color: var(--text-dark); color: var(--bg-light); text-align: center; padding: 20px; }
 
 /* =========================================
