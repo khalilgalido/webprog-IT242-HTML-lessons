@@ -131,6 +131,7 @@ ul { list-style: none; }
    ========================================= */
 #hobbies .section-title { background-color: var(--bg-light); color: var(--text-dark); display: inline-block; padding: 15px 40px; border-radius: 50px; box-shadow: 5px 5px 0px rgba(51, 51, 51, 0.1); margin-bottom: 60px; }
 #hobbies .container { text-align: center; }
+
 .hobbies-list {
     display: flex;
     flex-wrap: wrap;
@@ -231,3 +232,74 @@ footer { background-color: var(--text-dark); color: var(--bg-light); text-align:
     .gallery-item { flex: 0 0 calc(50% - 20px); }
 }
 @media (max-width: 480px) { .gallery-item { flex: 0 0 100%; } }
+
+/* =========================================
+   9. RESOURCES SECTION (Clean Layout)
+   ========================================= */
+
+/* --- The Header with the Horizontal Line --- */
+.resources-header {
+    display: flex;
+    align-items: center; /* Aligns text and line vertically */
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.resources-header .section-title {
+    margin: 0;
+    padding-right: 30px; /* Space between text and line */
+    white-space: nowrap; /* Ensures "Resources" stays on one line */
+    text-align: left; /* Overrides center align */
+}
+
+.header-line {
+    flex-grow: 1; /* Takes up all remaining space */
+    height: 2px;
+    background-color: var(--text-dark); /* Dark Green Line */
+    border-radius: 2px;
+}
+
+/* --- The Grid Layout --- */
+.resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    column-gap: 50px; /* Space between columns */
+    row-gap: 30px;    /* Space between items */
+    text-align: left;
+}
+
+/* --- Individual Items --- */
+.resource-item {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1rem;
+    color: var(--dark-grey);
+    line-height: 1.6;
+}
+
+/* --- The Bold Clickable Links --- */
+.resource-link {
+    font-weight: 800; /* Bold */
+    color: var(--text-dark); /* Dark Green */
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect for Links */
+.resource-link:hover {
+    color: var(--bg-accent); /* Light Green on hover */
+    text-decoration: underline;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .resources-grid {
+        grid-template-columns: 1fr; /* Stack vertically on phones */
+        gap: 20px;
+    }
+    
+    .resources-header .section-title {
+        font-size: 2rem;
+        padding-right: 15px;
+    }
+}
